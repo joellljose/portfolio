@@ -89,32 +89,32 @@ ${actionItems
   };
 
   return (
-    <div className="cyber-card rounded-2xl overflow-hidden border border-purple-500/20 bg-[#090d18]">
+    <div className="cyber-card rounded-2xl overflow-hidden border border-emerald-500/25 bg-[#030805]">
       {/* Chrome Extension Simulated Header */}
-      <div className="p-3 bg-[#0d1222] border-b border-purple-500/20 flex items-center justify-between">
+      <div className="p-3 bg-[#040e07] border-b border-emerald-500/20 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <div className="w-5 h-5 rounded-md bg-purple-600/30 border border-purple-400 flex items-center justify-center text-[10px] font-bold text-purple-300">
+          <div className="w-5 h-5 rounded-md bg-emerald-500/30 border border-emerald-400 flex items-center justify-center text-[10px] font-bold text-emerald-300">
             M
           </div>
           <div>
             <span className="text-xs font-mono font-bold text-slate-100">MeetMash v1.2</span>
-            <span className="text-[10px] font-mono text-purple-400 ml-2">Chrome Extension</span>
+            <span className="text-[10px] font-mono text-emerald-400 ml-2">Chrome Extension</span>
           </div>
         </div>
 
         <div className="flex items-center gap-2 text-[10px] font-mono text-slate-400">
-          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-emerald-950/60 border border-emerald-500/30 text-emerald-300">
+          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-emerald-950/80 border border-emerald-500/40 text-emerald-300">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
             MutationObserver: Capturing
           </span>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-0 divide-y md:divide-y-0 md:divide-x divide-slate-800">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-0 divide-y md:divide-y-0 md:divide-x divide-emerald-950">
         {/* Left Column: Live Captions Feed */}
-        <div className="md:col-span-6 p-4 bg-[#070b14] space-y-3">
+        <div className="md:col-span-6 p-4 bg-black/90 space-y-3">
           <div className="flex items-center justify-between text-xs font-mono text-slate-400">
-            <span className="flex items-center gap-1.5 text-cyan-400">
+            <span className="flex items-center gap-1.5 text-emerald-400">
               <Eye className="w-3.5 h-3.5" />
               Live Captions Stream (De-duplicated)
             </span>
@@ -123,9 +123,9 @@ ${actionItems
 
           <div className="space-y-2 max-h-[220px] overflow-y-auto pr-1 text-xs">
             {captions.map((c, i) => (
-              <div key={i} className="p-2 rounded-lg bg-slate-900/60 border border-slate-800/80 space-y-1">
+              <div key={i} className="p-2 rounded-lg bg-[#040b06] border border-emerald-950/80 space-y-1">
                 <div className="flex items-center justify-between font-mono text-[10.5px]">
-                  <span className="font-semibold text-slate-300">{c.speaker}</span>
+                  <span className="font-semibold text-emerald-300">{c.speaker}</span>
                   <span className="text-slate-500">{c.time}</span>
                 </div>
                 <p className="text-slate-300 font-sans text-xs">{c.text}</p>
@@ -136,11 +136,11 @@ ${actionItems
           <button
             onClick={handleRunAnalysis}
             disabled={isSummarizing}
-            className="w-full py-2 px-3 rounded-xl bg-purple-600 hover:bg-purple-500 disabled:bg-slate-800 text-white text-xs font-mono font-medium flex items-center justify-center gap-2 transition-colors shadow-md shadow-purple-600/20"
+            className="w-full py-2 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-900 text-black font-extrabold text-xs font-mono flex items-center justify-center gap-2 transition-colors shadow-md shadow-emerald-600/20"
           >
             {isSummarizing ? (
               <>
-                <span className="w-3 h-3 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                <span className="w-3 h-3 border-2 border-black border-t-transparent rounded-full animate-spin" />
                 <span>Gemini API Extracting Tasks...</span>
               </>
             ) : (
@@ -153,15 +153,15 @@ ${actionItems
         </div>
 
         {/* Right Column: AI Action Items & Markdown Export */}
-        <div className="md:col-span-6 p-4 bg-[#080d19] space-y-3">
+        <div className="md:col-span-6 p-4 bg-[#020704] space-y-3">
           <div className="flex items-center justify-between text-xs font-mono">
-            <span className="flex items-center gap-1.5 text-purple-300 font-semibold">
-              <Sparkles className="w-3.5 h-3.5 text-purple-400" />
+            <span className="flex items-center gap-1.5 text-emerald-300 font-semibold">
+              <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
               Extracted Action Items ({actionItems.filter((t) => t.completed).length}/{actionItems.length})
             </span>
             <button
               onClick={handleCopyMarkdown}
-              className="flex items-center gap-1 px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 text-[10px] transition-colors"
+              className="flex items-center gap-1 px-2 py-0.5 rounded bg-black hover:bg-emerald-950 text-slate-300 hover:text-emerald-300 border border-slate-800 text-[10px] transition-colors"
               title="Copy Markdown"
             >
               {copied ? (
@@ -186,16 +186,16 @@ ${actionItems
                 onClick={() => toggleTask(item.id)}
                 className={`p-2.5 rounded-xl border text-xs cursor-pointer transition-all ${
                   item.completed
-                    ? 'bg-slate-900/40 border-slate-800 text-slate-500 line-through'
-                    : 'bg-slate-900/80 border-slate-800 hover:border-purple-500/40 text-slate-200'
+                    ? 'bg-black/40 border-emerald-950 text-slate-500 line-through'
+                    : 'bg-black/80 border-slate-800 hover:border-emerald-500/40 text-slate-200'
                 }`}
               >
                 <div className="flex items-start gap-2">
-                  <div className="mt-0.5 text-purple-400">
+                  <div className="mt-0.5 text-emerald-400">
                     {item.completed ? (
                       <CheckSquare className="w-4 h-4 text-emerald-400" />
                     ) : (
-                      <Square className="w-4 h-4 text-slate-500" />
+                      <Square className="w-4 h-4 text-slate-600" />
                     )}
                   </div>
                   <div className="flex-1 min-w-0">
@@ -203,14 +203,14 @@ ${actionItems
                       {item.task}
                     </p>
                     <div className="flex items-center gap-2 mt-1 text-[10px] font-mono text-slate-400">
-                      <span className="text-cyan-400">@{item.owner}</span>
+                      <span className="text-emerald-400">@{item.owner}</span>
                       <span>•</span>
                       <span>{item.deadline}</span>
                       <span
                         className={`ml-auto px-1.5 py-0.2 rounded font-semibold ${
                           item.priority === 'HIGH'
-                            ? 'bg-rose-950/80 text-rose-300 border border-rose-800'
-                            : 'bg-amber-950/80 text-amber-300 border border-amber-800'
+                            ? 'bg-emerald-950 text-emerald-300 border border-emerald-700'
+                            : 'bg-green-950 text-green-300 border border-green-800'
                         }`}
                       >
                         {item.priority}
@@ -222,8 +222,8 @@ ${actionItems
             ))}
           </div>
 
-          <div className="p-2 rounded-lg bg-purple-950/30 border border-purple-500/20 text-[10.5px] font-mono text-purple-200 flex items-center gap-1.5">
-            <CheckCircle2 className="w-3.5 h-3.5 text-purple-400 shrink-0" />
+          <div className="p-2 rounded-lg bg-emerald-950/40 border border-emerald-500/30 text-[10.5px] font-mono text-emerald-300 flex items-center gap-1.5">
+            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
             <span>State synchronized to browser local storage.</span>
           </div>
         </div>

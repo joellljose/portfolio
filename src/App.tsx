@@ -28,7 +28,7 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#06080e] text-slate-100 relative selection:bg-cyan-500/30 selection:text-cyan-200">
+    <div className="min-h-screen bg-[#020503] text-slate-100 relative selection:bg-emerald-500/30 selection:text-emerald-300">
       {/* Background Interactive Canvas */}
       <MatrixBackground />
 

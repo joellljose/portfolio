@@ -66,21 +66,21 @@ Built on Flutter and Dart with Firebase Firestore real-time sync and RBAC securi
 
   return (
     <section className="py-20 px-4 sm:px-6 lg:px-8 relative max-w-7xl mx-auto">
-      <div className="cyber-card rounded-3xl p-6 sm:p-10 border border-purple-500/30 bg-gradient-to-b from-[#0a0f20] to-[#070b16] relative overflow-hidden shadow-2xl">
+      <div className="cyber-card rounded-3xl p-6 sm:p-10 border border-emerald-500/30 bg-gradient-to-b from-[#030a05] to-[#010402] relative overflow-hidden shadow-2xl">
         {/* Glow corner */}
-        <div className="absolute top-0 right-0 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-0 right-0 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
 
         <div className="max-w-4xl mx-auto space-y-6">
           {/* Header */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-purple-500/20 pb-5">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-emerald-950 pb-5">
             <div className="flex items-center gap-3">
-              <div className="p-3 rounded-2xl bg-purple-950/70 border border-purple-500/40 text-purple-300">
+              <div className="p-3 rounded-2xl bg-emerald-950/80 border border-emerald-500/40 text-emerald-300">
                 <Bot className="w-6 h-6 animate-pulse" />
               </div>
               <div>
                 <div className="flex items-center gap-2">
                   <h3 className="text-xl font-bold text-white">Ask Joel&apos;s Gemini Assistant</h3>
-                  <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-purple-900/60 text-purple-300 border border-purple-700">
+                  <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-emerald-900/60 text-emerald-300 border border-emerald-700">
                     Gemini 1.5 Pro Model
                   </span>
                 </div>
@@ -90,7 +90,7 @@ Built on Flutter and Dart with Firebase Firestore real-time sync and RBAC securi
               </div>
             </div>
 
-            <div className="flex items-center gap-1.5 text-[11px] font-mono text-emerald-400 bg-emerald-950/60 px-3 py-1 rounded-full border border-emerald-500/30 self-start sm:self-auto">
+            <div className="flex items-center gap-1.5 text-[11px] font-mono text-emerald-400 bg-emerald-950/80 px-3 py-1 rounded-full border border-emerald-500/30 self-start sm:self-auto">
               <Zap className="w-3.5 h-3.5 text-emerald-400" />
               <span>Real-Time Inference</span>
             </div>
@@ -98,14 +98,14 @@ Built on Flutter and Dart with Firebase Firestore real-time sync and RBAC securi
 
           {/* Quick Prompt Chips */}
           <div className="space-y-2">
-            <span className="text-[11px] font-mono text-slate-400 block">Suggested Developer Queries:</span>
+            <span className="text-[11px] font-mono text-emerald-500/80 block">Suggested Developer Queries:</span>
             <div className="flex flex-wrap gap-2">
               {QUICK_PROMPTS.map((qp) => (
                 <button
                   key={qp}
                   onClick={() => handleSelectQuick(qp)}
                   onMouseEnter={() => soundFx.playHover()}
-                  className="px-3 py-1.5 rounded-xl bg-slate-900/90 hover:bg-purple-950/70 text-slate-300 hover:text-purple-200 border border-slate-800 hover:border-purple-500/40 text-xs font-sans text-left transition-all"
+                  className="px-3 py-1.5 rounded-xl bg-black/90 hover:bg-emerald-950 text-slate-300 hover:text-emerald-300 border border-slate-800 hover:border-emerald-500/40 text-xs font-sans text-left transition-all"
                 >
                   {qp}
                 </button>
@@ -114,22 +114,22 @@ Built on Flutter and Dart with Firebase Firestore real-time sync and RBAC securi
           </div>
 
           {/* AI Response Display Box */}
-          <div className="p-5 rounded-2xl bg-[#050811] border border-purple-500/25 min-h-[140px] flex flex-col justify-between">
+          <div className="p-5 rounded-2xl bg-black border border-emerald-500/25 min-h-[140px] flex flex-col justify-between">
             {isLoading ? (
-              <div className="flex items-center justify-center gap-3 py-8 text-purple-300 font-mono text-xs">
-                <RefreshCw className="w-4 h-4 animate-spin text-purple-400" />
+              <div className="flex items-center justify-center gap-3 py-8 text-emerald-300 font-mono text-xs">
+                <RefreshCw className="w-4 h-4 animate-spin text-emerald-400" />
                 <span>Gemini API querying Joel&apos;s portfolio database...</span>
               </div>
             ) : (
               <div className="space-y-3">
-                <div className="flex items-center justify-between text-[11px] font-mono text-slate-500 pb-2 border-b border-slate-800/80">
-                  <span className="text-purple-400 font-semibold flex items-center gap-1.5">
+                <div className="flex items-center justify-between text-[11px] font-mono text-emerald-500/70 pb-2 border-b border-emerald-950">
+                  <span className="text-emerald-400 font-semibold flex items-center gap-1.5">
                     <Sparkles className="w-3.5 h-3.5" />
                     AI Agent Response:
                   </span>
                   <span>Model: gemini-1.5-pro-preview</span>
                 </div>
-                <p className="text-xs sm:text-sm text-slate-200 leading-relaxed font-sans whitespace-pre-wrap">
+                <p className="text-xs sm:text-sm text-emerald-100/90 leading-relaxed font-sans whitespace-pre-wrap">
                   {response}
                 </p>
               </div>
@@ -143,12 +143,12 @@ Built on Flutter and Dart with Firebase Firestore real-time sync and RBAC securi
               value={prompt}
               onChange={(e) => setPrompt(e.target.value)}
               placeholder="Ask anything about Joel's engineering background or project experience..."
-              className="flex-1 px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-800 text-slate-100 text-xs sm:text-sm font-sans focus:outline-none focus:border-purple-500 transition-colors"
+              className="flex-1 px-4 py-3 rounded-xl bg-black border border-slate-800 text-slate-100 text-xs sm:text-sm font-sans focus:outline-none focus:border-emerald-500 transition-colors"
             />
             <button
               type="submit"
               disabled={!prompt.trim() || isLoading}
-              className="px-6 py-3 rounded-xl bg-purple-600 hover:bg-purple-500 disabled:bg-slate-800 text-white font-mono text-xs font-bold flex items-center gap-2 transition-colors shadow-lg shadow-purple-600/25"
+              className="px-6 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 disabled:bg-slate-900 text-black font-mono text-xs font-extrabold flex items-center gap-2 transition-colors shadow-lg shadow-emerald-500/25"
             >
               <Send className="w-4 h-4" />
               <span className="hidden sm:inline">Ask AI</span>

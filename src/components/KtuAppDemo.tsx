@@ -82,21 +82,21 @@ export const KtuAppDemo: React.FC = () => {
   };
 
   return (
-    <div className="cyber-card rounded-2xl overflow-hidden border border-cyan-500/20 bg-[#090e1a]">
+    <div className="cyber-card rounded-2xl overflow-hidden border border-emerald-500/25 bg-[#030805]">
       {/* Mobile Frame Header */}
-      <div className="p-3 bg-[#0c1322] border-b border-cyan-500/15 flex items-center justify-between">
+      <div className="p-3 bg-[#040d06] border-b border-emerald-500/20 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <Smartphone className="w-4 h-4 text-cyan-400" />
+          <Smartphone className="w-4 h-4 text-emerald-400" />
           <span className="text-xs font-mono font-bold text-slate-200">AI KTU Notes Mobile Simulator</span>
         </div>
-        <div className="flex items-center gap-1.5 text-[10px] font-mono text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/30">
+        <div className="flex items-center gap-1.5 text-[10px] font-mono text-emerald-400 bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-500/40">
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
           <span>Gemini &amp; Firebase Connected</span>
         </div>
       </div>
 
       {/* App Navigation Tabs */}
-      <div className="flex border-b border-slate-800 bg-[#070b14] text-xs font-mono">
+      <div className="flex border-b border-emerald-950 bg-black text-xs font-mono">
         <button
           onClick={() => {
             soundFx.playHover();
@@ -104,11 +104,11 @@ export const KtuAppDemo: React.FC = () => {
           }}
           className={`flex-1 py-2.5 px-3 flex items-center justify-center gap-2 transition-colors ${
             activeTab === 'doubt'
-              ? 'bg-cyan-950/40 text-cyan-300 border-b-2 border-cyan-400 font-bold'
-              : 'text-slate-400 hover:text-slate-200'
+              ? 'bg-emerald-950/60 text-emerald-300 border-b-2 border-emerald-400 font-bold'
+              : 'text-slate-400 hover:text-emerald-300'
           }`}
         >
-          <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
+          <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
           <span>Gemini Tutor</span>
         </button>
 
@@ -119,11 +119,11 @@ export const KtuAppDemo: React.FC = () => {
           }}
           className={`flex-1 py-2.5 px-3 flex items-center justify-center gap-2 transition-colors ${
             activeTab === 'quiz'
-              ? 'bg-cyan-950/40 text-cyan-300 border-b-2 border-cyan-400 font-bold'
-              : 'text-slate-400 hover:text-slate-200'
+              ? 'bg-emerald-950/60 text-emerald-300 border-b-2 border-emerald-400 font-bold'
+              : 'text-slate-400 hover:text-emerald-300'
           }`}
         >
-          <BookOpen className="w-3.5 h-3.5 text-purple-400" />
+          <BookOpen className="w-3.5 h-3.5 text-green-400" />
           <span>KTU Quiz Engine</span>
         </button>
 
@@ -134,11 +134,11 @@ export const KtuAppDemo: React.FC = () => {
           }}
           className={`flex-1 py-2.5 px-3 flex items-center justify-center gap-2 transition-colors ${
             activeTab === 'cloud'
-              ? 'bg-cyan-950/40 text-cyan-300 border-b-2 border-cyan-400 font-bold'
-              : 'text-slate-400 hover:text-slate-200'
+              ? 'bg-emerald-950/60 text-emerald-300 border-b-2 border-emerald-400 font-bold'
+              : 'text-slate-400 hover:text-emerald-300'
           }`}
         >
-          <Database className="w-3.5 h-3.5 text-amber-400" />
+          <Database className="w-3.5 h-3.5 text-emerald-400" />
           <span>Firebase Sync</span>
         </button>
       </div>
@@ -157,8 +157,8 @@ export const KtuAppDemo: React.FC = () => {
                     onClick={() => handleSelectTopic(idx)}
                     className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-all ${
                       selectedTopicIndex === idx
-                        ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/50 shadow-sm'
-                        : 'bg-slate-900 text-slate-400 border border-slate-800 hover:text-slate-200'
+                        ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/60 shadow-sm'
+                        : 'bg-black text-slate-400 border border-slate-800 hover:text-emerald-300 hover:border-emerald-500/40'
                     }`}
                   >
                     {item.topic}
@@ -168,22 +168,22 @@ export const KtuAppDemo: React.FC = () => {
             </div>
 
             {/* AI Assistant Output Card */}
-            <div className="p-4 rounded-xl bg-[#060a12] border border-cyan-500/20 text-xs font-mono relative overflow-hidden">
+            <div className="p-4 rounded-xl bg-black border border-emerald-500/25 text-xs font-mono relative overflow-hidden">
               {isGenerating ? (
-                <div className="flex items-center gap-3 py-6 justify-center text-cyan-400">
+                <div className="flex items-center gap-3 py-6 justify-center text-emerald-400">
                   <RefreshCw className="w-4 h-4 animate-spin" />
                   <span>Gemini API deconstructing syllabus notes...</span>
                 </div>
               ) : (
                 <div className="whitespace-pre-wrap leading-relaxed text-slate-200 space-y-2">
-                  <div className="flex items-center justify-between pb-2 mb-2 border-b border-slate-800/80">
-                    <span className="text-cyan-400 font-bold flex items-center gap-1.5">
+                  <div className="flex items-center justify-between pb-2 mb-2 border-b border-emerald-950">
+                    <span className="text-emerald-400 font-bold flex items-center gap-1.5">
                       <Sparkles className="w-3.5 h-3.5" />
                       Gemini Doubt Resolution
                     </span>
-                    <span className="text-[10px] text-slate-500">Latency: 142ms</span>
+                    <span className="text-[10px] text-emerald-600 font-mono">Latency: 142ms</span>
                   </div>
-                  <div>{activeResponse}</div>
+                  <div className="text-emerald-100/90">{activeResponse}</div>
                 </div>
               )}
             </div>
@@ -195,12 +195,12 @@ export const KtuAppDemo: React.FC = () => {
                 value={customQuestion}
                 onChange={(e) => setCustomQuestion(e.target.value)}
                 placeholder="Ask KTU AI Tutor anything (e.g., Dijkstra algorithm time complexity)..."
-                className="flex-1 px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-200 text-xs font-mono focus:outline-none focus:border-cyan-500/60"
+                className="flex-1 px-3.5 py-2 rounded-xl bg-black border border-slate-800 text-slate-200 text-xs font-mono focus:outline-none focus:border-emerald-500/60"
               />
               <button
                 type="submit"
                 disabled={!customQuestion.trim() || isGenerating}
-                className="px-4 py-2 rounded-xl bg-cyan-600 hover:bg-cyan-500 disabled:bg-slate-800 text-white text-xs font-mono flex items-center gap-1.5 transition-colors"
+                className="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-900 text-black font-bold text-xs font-mono flex items-center gap-1.5 transition-colors"
               >
                 <Send className="w-3.5 h-3.5" />
                 <span>Ask</span>
@@ -211,7 +211,7 @@ export const KtuAppDemo: React.FC = () => {
 
         {activeTab === 'quiz' && (
           <div className="space-y-4 text-xs font-mono">
-            <div className="p-3 rounded-xl bg-slate-900/80 border border-slate-800">
+            <div className="p-3 rounded-xl bg-black/80 border border-slate-800">
               <p className="font-bold text-slate-200 mb-2">Q1: In LR parsing, what lookahead does SLR(1) use?</p>
               <div className="space-y-1.5 pl-2">
                 {['First set of Left-Hand Side', 'Follow set of Left-Hand Side', 'All terminal tokens'].map((opt, i) => (
@@ -220,8 +220,8 @@ export const KtuAppDemo: React.FC = () => {
                     onClick={() => handleAnswerQuiz(0, i)}
                     className={`w-full text-left p-2 rounded-lg border transition-all ${
                       quizAnswers[0] === i
-                        ? 'bg-cyan-950/60 border-cyan-500/50 text-cyan-300'
-                        : 'bg-slate-950/40 border-slate-800/80 text-slate-400 hover:text-slate-200'
+                        ? 'bg-emerald-950/80 border-emerald-500/60 text-emerald-300'
+                        : 'bg-black/50 border-slate-800/80 text-slate-400 hover:text-emerald-300'
                     }`}
                   >
                     {String.fromCharCode(65 + i)}. {opt}
@@ -230,7 +230,7 @@ export const KtuAppDemo: React.FC = () => {
               </div>
             </div>
 
-            <div className="p-3 rounded-xl bg-slate-900/80 border border-slate-800">
+            <div className="p-3 rounded-xl bg-black/80 border border-slate-800">
               <p className="font-bold text-slate-200 mb-2">Q2: What is the strict requirement for Boyce-Codd Normal Form (BCNF)?</p>
               <div className="space-y-1.5 pl-2">
                 {['Must have no multi-valued dependencies', 'Must not have transitively dependent attributes', 'For every X -> Y, X must be a super key'].map((opt, i) => (
@@ -239,8 +239,8 @@ export const KtuAppDemo: React.FC = () => {
                     onClick={() => handleAnswerQuiz(1, i)}
                     className={`w-full text-left p-2 rounded-lg border transition-all ${
                       quizAnswers[1] === i
-                        ? 'bg-purple-950/60 border-purple-500/50 text-purple-300'
-                        : 'bg-slate-950/40 border-slate-800/80 text-slate-400 hover:text-slate-200'
+                        ? 'bg-emerald-950/80 border-emerald-500/60 text-emerald-300'
+                        : 'bg-black/50 border-slate-800/80 text-slate-400 hover:text-emerald-300'
                     }`}
                   >
                     {String.fromCharCode(65 + i)}. {opt}
@@ -252,14 +252,14 @@ export const KtuAppDemo: React.FC = () => {
             <div className="flex items-center justify-between pt-2">
               <button
                 onClick={calculateScore}
-                className="px-4 py-2 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-bold flex items-center gap-1.5"
+                className="px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-extrabold flex items-center gap-1.5"
               >
                 <span>Submit &amp; Grade Quiz</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </button>
               {quizScore !== null && (
-                <div className="flex items-center gap-2 text-emerald-400 font-bold bg-emerald-950/50 px-3 py-1.5 rounded-lg border border-emerald-500/30">
-                  <CheckCircle className="w-4 h-4" />
+                <div className="flex items-center gap-2 text-emerald-300 font-bold bg-emerald-950/80 px-3 py-1.5 rounded-lg border border-emerald-500/50">
+                  <CheckCircle className="w-4 h-4 text-emerald-400" />
                   <span>Score: {quizScore} / 2 ({(quizScore / 2) * 100}%)</span>
                 </div>
               )}
@@ -269,25 +269,25 @@ export const KtuAppDemo: React.FC = () => {
 
         {activeTab === 'cloud' && (
           <div className="space-y-3 text-xs font-mono">
-            <div className="p-3 rounded-xl bg-[#060a12] border border-amber-500/30 space-y-2">
-              <div className="flex items-center justify-between text-amber-400 font-bold">
+            <div className="p-3 rounded-xl bg-black border border-emerald-500/30 space-y-2">
+              <div className="flex items-center justify-between text-emerald-400 font-bold">
                 <span>Firestore Real-Time Stream Status:</span>
-                <span className="text-[10px] bg-amber-950/60 px-2 py-0.5 rounded border border-amber-500/30">
+                <span className="text-[10px] bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-500/40 text-emerald-300">
                   SYNC_ACTIVE
                 </span>
               </div>
               <div className="space-y-1.5 text-slate-300">
-                <div className="p-2 rounded bg-slate-900/60 border border-slate-800 flex justify-between">
+                <div className="p-2 rounded bg-black/60 border border-slate-800 flex justify-between">
                   <span>collection: <code>ktu_notes/CS401</code></span>
                   <span className="text-emerald-400">Snapshot Updated (12 docs)</span>
                 </div>
-                <div className="p-2 rounded bg-slate-900/60 border border-slate-800 flex justify-between">
+                <div className="p-2 rounded bg-black/60 border border-slate-800 flex justify-between">
                   <span>security_rules: <code>RBAC (student/admin)</code></span>
-                  <span className="text-cyan-400">Enforced</span>
+                  <span className="text-emerald-400">Enforced</span>
                 </div>
-                <div className="p-2 rounded bg-slate-900/60 border border-slate-800 flex justify-between">
+                <div className="p-2 rounded bg-black/60 border border-slate-800 flex justify-between">
                   <span>auth_provider: <code>Firebase Auth UID</code></span>
-                  <span className="text-purple-400">Verified</span>
+                  <span className="text-green-400">Verified</span>
                 </div>
               </div>
             </div>

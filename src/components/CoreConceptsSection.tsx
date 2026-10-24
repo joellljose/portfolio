@@ -8,17 +8,17 @@ export const CoreConceptsSection: React.FC = () => {
   const getConceptIcon = (iconName: string) => {
     switch (iconName) {
       case 'Binary':
-        return <Binary className="w-5 h-5 text-cyan-400" />;
+        return <Binary className="w-5 h-5 text-emerald-400" />;
       case 'Layers3':
-        return <Layers3 className="w-5 h-5 text-purple-400" />;
+        return <Layers3 className="w-5 h-5 text-green-400" />;
       case 'Cpu':
         return <Cpu className="w-5 h-5 text-emerald-400" />;
       case 'Database':
-        return <Database className="w-5 h-5 text-amber-400" />;
+        return <Database className="w-5 h-5 text-emerald-400" />;
       case 'Globe2':
-        return <Globe2 className="w-5 h-5 text-sky-400" />;
+        return <Globe2 className="w-5 h-5 text-green-400" />;
       default:
-        return <Sparkles className="w-5 h-5 text-cyan-400" />;
+        return <Sparkles className="w-5 h-5 text-emerald-400" />;
     }
   };
 
@@ -26,7 +26,7 @@ export const CoreConceptsSection: React.FC = () => {
     <section className="py-20 px-4 sm:px-6 lg:px-8 relative max-w-7xl mx-auto">
       {/* Header */}
       <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 border border-cyan-500/30 text-cyan-400 text-xs font-mono">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black border border-emerald-500/40 text-emerald-400 text-xs font-mono">
           <Binary className="w-3.5 h-3.5" />
           <span>ENGINEERING FOUNDATIONS</span>
         </div>
@@ -50,16 +50,16 @@ export const CoreConceptsSection: React.FC = () => {
             onMouseEnter={() => {
               soundFx.playHover();
             }}
-            className="cyber-card rounded-2xl p-6 border border-slate-800/80 hover:border-cyan-500/40 transition-all duration-300 relative group overflow-hidden"
+            className="cyber-card rounded-2xl p-6 border border-slate-800/80 hover:border-emerald-500/50 transition-all duration-300 relative group overflow-hidden"
           >
             {/* Ambient hover light */}
-            <div className="absolute -top-12 -right-12 w-28 h-28 bg-cyan-500/10 rounded-full blur-2xl group-hover:bg-cyan-500/20 transition-all pointer-events-none" />
+            <div className="absolute -top-12 -right-12 w-28 h-28 bg-emerald-500/10 rounded-full blur-2xl group-hover:bg-emerald-500/20 transition-all pointer-events-none" />
 
             <div className="flex items-center gap-3 mb-4">
-              <div className="p-2.5 rounded-xl bg-slate-900/90 border border-slate-800 group-hover:border-cyan-500/40 transition-colors">
+              <div className="p-2.5 rounded-xl bg-black border border-slate-800 group-hover:border-emerald-500/40 transition-colors">
                 {getConceptIcon(concept.icon)}
               </div>
-              <h3 className="text-base font-bold text-white font-sans group-hover:text-cyan-300 transition-colors">
+              <h3 className="text-base font-bold text-white font-sans group-hover:text-emerald-300 transition-colors">
                 {concept.title}
               </h3>
             </div>
@@ -69,11 +69,11 @@ export const CoreConceptsSection: React.FC = () => {
             </p>
 
             {/* Tags */}
-            <div className="flex flex-wrap gap-1.5 pt-2 border-t border-slate-800/60">
+            <div className="flex flex-wrap gap-1.5 pt-2 border-t border-emerald-950/60">
               {concept.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="px-2 py-0.5 rounded-md bg-slate-900/80 border border-slate-800 text-[10.5px] font-mono text-slate-400 group-hover:text-cyan-300 transition-colors"
+                  className="px-2 py-0.5 rounded-md bg-black border border-slate-800 text-[10.5px] font-mono text-slate-400 group-hover:text-emerald-300 transition-colors"
                 >
                   {tag}
                 </span>
@@ -88,22 +88,22 @@ export const CoreConceptsSection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4, delay: 0.4 }}
-          className="cyber-card rounded-2xl p-6 border border-purple-500/30 bg-purple-950/10 transition-all duration-300 relative group"
+          className="cyber-card rounded-2xl p-6 border border-emerald-500/40 bg-emerald-950/20 transition-all duration-300 relative group"
         >
           <div className="flex items-center gap-3 mb-4">
-            <div className="p-2.5 rounded-xl bg-purple-950/60 border border-purple-500/40 text-purple-400">
+            <div className="p-2.5 rounded-xl bg-emerald-950/80 border border-emerald-500/40 text-emerald-400">
               <Sparkles className="w-5 h-5" />
             </div>
-            <h3 className="text-base font-bold text-white font-sans group-hover:text-purple-300 transition-colors">
+            <h3 className="text-base font-bold text-white font-sans group-hover:text-emerald-300 transition-colors">
               Professional Soft Skills
             </h3>
           </div>
 
           <div className="space-y-2 text-xs">
             {RESUME_DATA.additional.softSkills.map((s) => (
-              <div key={s.name} className="flex items-center justify-between p-1.5 rounded bg-slate-900/50 border border-slate-800">
+              <div key={s.name} className="flex items-center justify-between p-1.5 rounded bg-black/60 border border-slate-800">
                 <span className="font-sans text-slate-200">{s.name}</span>
-                <span className="text-[10px] font-mono text-emerald-400 font-semibold bg-emerald-950/60 px-1.5 py-0.5 rounded">
+                <span className="text-[10px] font-mono text-emerald-400 font-semibold bg-emerald-950/80 px-1.5 py-0.5 rounded border border-emerald-900">
                   {s.level}
                 </span>
               </div>

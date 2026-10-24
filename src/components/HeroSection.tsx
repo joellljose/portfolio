@@ -54,17 +54,17 @@ export const HeroSection: React.FC<HeroProps> = ({ onOpenResume, onExploreProjec
       particleCount: 100,
       spread: 80,
       origin: { y: 0.6 },
-      colors: ['#06b6d4', '#10b981', '#a855f7', '#f59e0b'],
+      colors: ['#00ff88', '#10b981', '#22c55e', '#34d399'],
     });
     onOpenContact();
   };
 
   return (
     <section id="hero" className="relative min-h-[92vh] flex items-center justify-center pt-28 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
-      {/* Ambient background glow orbs */}
-      <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none animate-pulse-slow" />
-      <div className="absolute top-1/3 right-1/4 -translate-y-1/2 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl pointer-events-none animate-pulse-slow" />
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 w-80 h-80 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
+      {/* Ambient background green glow orbs */}
+      <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none animate-pulse-slow" />
+      <div className="absolute top-1/3 right-1/4 -translate-y-1/2 w-96 h-96 bg-green-500/10 rounded-full blur-3xl pointer-events-none animate-pulse-slow" />
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 w-80 h-80 bg-emerald-500/8 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
         {/* Left Column: Developer Information & Intro */}
@@ -74,13 +74,13 @@ export const HeroSection: React.FC<HeroProps> = ({ onOpenResume, onExploreProjec
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-950/60 border border-cyan-500/30 text-cyan-300 text-xs font-mono shadow-sm"
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-950/70 border border-emerald-500/40 text-emerald-300 text-xs font-mono shadow-sm"
           >
             <span className="relative flex h-2.5 w-2.5">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400" />
             </span>
-            <span>Available for Hire • S/W Engineer & Internships</span>
+            <span>Available for Hire • S/W Engineer &amp; Internships</span>
           </motion.div>
 
           {/* Main Title & Typewriter */}
@@ -92,7 +92,7 @@ export const HeroSection: React.FC<HeroProps> = ({ onOpenResume, onExploreProjec
               className="flex items-center gap-3"
             >
               <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white font-sans">
-                JOEL <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-300 to-purple-500 text-glow-cyan">JOSE</span>
+                JOEL <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-green-300 to-teal-400 text-glow-green">JOSE</span>
               </h1>
             </motion.div>
 
@@ -101,11 +101,11 @@ export const HeroSection: React.FC<HeroProps> = ({ onOpenResume, onExploreProjec
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="h-10 flex items-center gap-2 text-xl sm:text-2xl font-mono text-cyan-300"
+              className="h-10 flex items-center gap-2 text-xl sm:text-2xl font-mono text-emerald-300"
             >
-              <span className="text-purple-400 font-bold">&gt;</span>
+              <span className="text-emerald-400 font-bold">&gt;</span>
               <span className="font-semibold text-slate-100">{currentText}</span>
-              <span className="w-2.5 h-6 bg-cyan-400 animate-pulse inline-block" />
+              <span className="w-2.5 h-6 bg-emerald-400 animate-pulse inline-block" />
             </motion.div>
           </div>
 
@@ -117,12 +117,12 @@ export const HeroSection: React.FC<HeroProps> = ({ onOpenResume, onExploreProjec
             className="flex flex-wrap items-center gap-4 text-xs font-mono text-slate-400"
           >
             <div className="flex items-center gap-1.5 text-slate-300">
-              <MapPin className="w-3.5 h-3.5 text-cyan-400" />
+              <MapPin className="w-3.5 h-3.5 text-emerald-400" />
               <span>Kollam, Kerala, India</span>
             </div>
-            <div className="h-3 w-px bg-slate-700" />
+            <div className="h-3 w-px bg-emerald-900/60" />
             <div className="flex items-center gap-1.5 text-slate-300">
-              <Award className="w-3.5 h-3.5 text-purple-400" />
+              <Award className="w-3.5 h-3.5 text-green-400" />
               <span>B.Tech CSE @ BMCE (CGPA 7.88)</span>
             </div>
           </motion.div>
@@ -136,7 +136,7 @@ export const HeroSection: React.FC<HeroProps> = ({ onOpenResume, onExploreProjec
           >
             Final-year B.Tech Computer Science student specializing in building AI-integrated systems,
             modern mobile applications with Flutter, and robust software tools powered by the{' '}
-            <span className="text-cyan-300 font-semibold underline decoration-cyan-500/40 underline-offset-4">Google Gemini API</span>.
+            <span className="text-emerald-300 font-semibold underline decoration-emerald-500/50 underline-offset-4">Google Gemini API</span>.
             Dedicated to clean architecture, data structures, and production-grade engineering.
           </motion.p>
 
@@ -150,9 +150,9 @@ export const HeroSection: React.FC<HeroProps> = ({ onOpenResume, onExploreProjec
             <button
               onClick={triggerHireCelebration}
               onMouseEnter={() => soundFx.playHover()}
-              className="group relative inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-bold text-sm tracking-wide shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all"
+              className="group relative inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-400 to-green-500 text-black font-extrabold text-sm tracking-wide shadow-lg shadow-emerald-500/25 hover:shadow-emerald-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all"
             >
-              <Sparkles className="w-4 h-4 text-slate-950" />
+              <Sparkles className="w-4 h-4 text-black" />
               <span>Hire Joel</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
@@ -162,9 +162,9 @@ export const HeroSection: React.FC<HeroProps> = ({ onOpenResume, onExploreProjec
                 soundFx.playHover();
                 onExploreProjects();
               }}
-              className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-slate-900/80 hover:bg-slate-800 text-slate-200 border border-slate-700 hover:border-cyan-500/40 text-sm font-medium transition-all"
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-black/80 hover:bg-emerald-950/40 text-slate-200 border border-slate-800 hover:border-emerald-500/50 text-sm font-medium transition-all"
             >
-              <Code2 className="w-4 h-4 text-cyan-400" />
+              <Code2 className="w-4 h-4 text-emerald-400" />
               <span>Explore Projects</span>
             </button>
 
@@ -173,9 +173,9 @@ export const HeroSection: React.FC<HeroProps> = ({ onOpenResume, onExploreProjec
                 soundFx.playHover();
                 onOpenResume();
               }}
-              className="inline-flex items-center gap-2 px-4 py-3 rounded-xl bg-slate-900/40 hover:bg-slate-800/80 text-slate-300 hover:text-white border border-slate-800 hover:border-slate-700 text-sm font-mono transition-all"
+              className="inline-flex items-center gap-2 px-4 py-3 rounded-xl bg-black/50 hover:bg-emerald-950/30 text-slate-300 hover:text-white border border-slate-800 hover:border-slate-700 text-sm font-mono transition-all"
             >
-              <Download className="w-4 h-4 text-purple-400" />
+              <Download className="w-4 h-4 text-emerald-400" />
               <span>Resume</span>
             </button>
           </motion.div>
@@ -185,7 +185,7 @@ export const HeroSection: React.FC<HeroProps> = ({ onOpenResume, onExploreProjec
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="flex items-center gap-4 pt-4 border-t border-slate-800/80 text-slate-400"
+            className="flex items-center gap-4 pt-4 border-t border-emerald-950/60 text-slate-400"
           >
             <span className="text-xs font-mono text-slate-500">Connect:</span>
             <a
@@ -193,7 +193,7 @@ export const HeroSection: React.FC<HeroProps> = ({ onOpenResume, onExploreProjec
               target="_blank"
               rel="noreferrer"
               onMouseEnter={() => soundFx.playHover()}
-              className="p-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-cyan-400 border border-slate-800 transition-colors"
+              className="p-2 rounded-lg bg-black hover:bg-emerald-950/60 text-slate-300 hover:text-emerald-400 border border-slate-800 hover:border-emerald-500/40 transition-colors"
               title="GitHub Profile"
             >
               <GithubIcon className="w-4 h-4" />
@@ -203,7 +203,7 @@ export const HeroSection: React.FC<HeroProps> = ({ onOpenResume, onExploreProjec
               target="_blank"
               rel="noreferrer"
               onMouseEnter={() => soundFx.playHover()}
-              className="p-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-blue-400 border border-slate-800 transition-colors"
+              className="p-2 rounded-lg bg-black hover:bg-emerald-950/60 text-slate-300 hover:text-emerald-400 border border-slate-800 hover:border-emerald-500/40 transition-colors"
               title="LinkedIn Profile"
             >
               <LinkedinIcon className="w-4 h-4" />
@@ -211,12 +211,12 @@ export const HeroSection: React.FC<HeroProps> = ({ onOpenResume, onExploreProjec
             <a
               href={`mailto:${RESUME_DATA.personal.email}`}
               onMouseEnter={() => soundFx.playHover()}
-              className="p-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-emerald-400 border border-slate-800 transition-colors"
+              className="p-2 rounded-lg bg-black hover:bg-emerald-950/60 text-slate-300 hover:text-emerald-400 border border-slate-800 hover:border-emerald-500/40 transition-colors"
               title="Send Direct Email"
             >
               <Mail className="w-4 h-4" />
             </a>
-            <div className="text-xs font-mono text-slate-500 ml-auto hidden sm:block">
+            <div className="text-xs font-mono text-emerald-400/80 ml-auto hidden sm:block">
               {RESUME_DATA.personal.email}
             </div>
           </motion.div>
@@ -230,8 +230,8 @@ export const HeroSection: React.FC<HeroProps> = ({ onOpenResume, onExploreProjec
           className="lg:col-span-5 relative"
         >
           {/* Subtle decoration elements */}
-          <div className="absolute -top-3 -right-3 px-3 py-1 bg-cyan-500/10 border border-cyan-500/30 rounded-lg text-[10px] font-mono text-cyan-300 backdrop-blur-sm z-20 flex items-center gap-1.5 shadow-lg">
-            <TerminalIcon className="w-3 h-3 text-cyan-400 animate-pulse" />
+          <div className="absolute -top-3 -right-3 px-3 py-1 bg-emerald-950/80 border border-emerald-500/40 rounded-lg text-[10px] font-mono text-emerald-300 backdrop-blur-sm z-20 flex items-center gap-1.5 shadow-lg">
+            <TerminalIcon className="w-3 h-3 text-emerald-400 animate-pulse" />
             <span>Interactive Terminal</span>
           </div>
 
@@ -245,9 +245,9 @@ export const HeroSection: React.FC<HeroProps> = ({ onOpenResume, onExploreProjec
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.4 + idx * 0.1 }}
-                className="p-3 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-cyan-500/30 transition-all text-center"
+                className="p-3 rounded-xl bg-black/80 border border-slate-800 hover:border-emerald-500/40 transition-all text-center"
               >
-                <div className="text-xl font-mono font-bold text-cyan-300">{s.value}</div>
+                <div className="text-xl font-mono font-bold text-emerald-400">{s.value}</div>
                 <div className="text-[11px] font-medium text-slate-200">{s.label}</div>
                 <div className="text-[10px] text-slate-500 truncate">{s.change}</div>
               </motion.div>

@@ -18,11 +18,11 @@ const TOKENS = [
 ];
 
 const COLORS = [
-  '#06b6d4', // cyan
-  '#38bdf8', // sky
-  '#a855f7', // purple
+  '#00ff88', // neon green
   '#10b981', // emerald
-  '#6366f1', // indigo
+  '#22c55e', // terminal green
+  '#34d399', // mint
+  '#059669', // dark matrix green
 ];
 
 export const MatrixBackground: React.FC = () => {
@@ -77,8 +77,8 @@ export const MatrixBackground: React.FC = () => {
     const render = () => {
       ctx.clearRect(0, 0, width, height);
 
-      // Draw subtle grid
-      ctx.strokeStyle = 'rgba(56, 189, 248, 0.025)';
+      // Draw subtle green grid
+      ctx.strokeStyle = 'rgba(0, 255, 136, 0.025)';
       ctx.lineWidth = 1;
       const gridSize = 60;
       for (let x = 0; x < width; x += gridSize) {
@@ -102,8 +102,8 @@ export const MatrixBackground: React.FC = () => {
           const dist = Math.sqrt(dx * dx + dy * dy);
 
           if (dist < 130) {
-            const alpha = (1 - dist / 130) * 0.14;
-            ctx.strokeStyle = `rgba(56, 189, 248, ${alpha})`;
+            const alpha = (1 - dist / 130) * 0.16;
+            ctx.strokeStyle = `rgba(0, 255, 136, ${alpha})`;
             ctx.lineWidth = 0.8;
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);

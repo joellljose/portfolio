@@ -9,15 +9,15 @@ export default {
     extend: {
       colors: {
         cyber: {
-          bg: '#07090e',
-          card: '#0d131f',
-          surface: '#121a2d',
-          border: 'rgba(56, 189, 248, 0.15)',
-          glow: '#00f2fe',
-          neonCyan: '#00f5ff',
-          neonPurple: '#a855f7',
+          bg: '#020503',
+          card: '#050c07',
+          surface: '#08140a',
+          border: 'rgba(0, 255, 136, 0.2)',
+          glow: '#00ff88',
           neonGreen: '#00ff88',
-          neonAmber: '#ffaa00',
+          emerald: '#10b981',
+          mint: '#34d399',
+          darkGreen: '#06200f',
         }
       },
       fontFamily: {
