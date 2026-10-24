@@ -8,88 +8,40 @@
   }
 
   body {
-    background-color: #020503;
+    background-color: #030604;
     color: #e2e8f0;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     overflow-x: hidden;
   }
 
-  /* Custom Green & Black scrollbar */
+  /* Minimal custom scrollbar */
   ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
   }
   ::-webkit-scrollbar-track {
-    background: #020603;
+    background: #030604;
   }
   ::-webkit-scrollbar-thumb {
     background: #064e26;
-    border-radius: 4px;
-    border: 1px solid rgba(0, 255, 136, 0.25);
+    border-radius: 3px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #00ff88;
+    background: #10b981;
   }
 }
 
-/* Glassmorphism & Cyber Green Cards */
-.cyber-card {
-  background: rgba(3, 10, 5, 0.78);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(0, 255, 136, 0.15);
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.85);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+/* Minimal clean card */
+.minimal-card {
+  background: #070d08;
+  border: 1px solid rgba(16, 185, 129, 0.15);
+  border-radius: 1rem;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
 }
 
-.cyber-card:hover {
-  border-color: rgba(0, 255, 136, 0.4);
-  box-shadow: 0 15px 35px -5px rgba(0, 255, 136, 0.16);
-}
-
-.cyber-border-glow {
-  position: relative;
-}
-.cyber-border-glow::before {
-  content: '';
-  position: absolute;
-  inset: -1px;
-  background: linear-gradient(90deg, #00ff88, #10b981, #059669, #22c55e, #00ff88);
-  background-size: 300% 300%;
-  border-radius: inherit;
-  z-index: -1;
-  animation: borderAnimation 6s ease infinite;
-  opacity: 0.5;
-}
-
-@keyframes borderAnimation {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* Neon Green Text Shadows */
-.text-glow-green {
-  text-shadow: 0 0 12px rgba(0, 255, 136, 0.7), 0 0 25px rgba(0, 255, 136, 0.35);
-}
-
-.text-glow-emerald {
-  text-shadow: 0 0 12px rgba(16, 185, 129, 0.7), 0 0 24px rgba(16, 185, 129, 0.35);
-}
-
-/* Matrix Terminal scanline overlay */
-.scanline-overlay {
-  background: linear-gradient(
-    rgba(10, 20, 12, 0) 50%, 
-    rgba(0, 0, 0, 0.3) 50%
-  ), linear-gradient(
-    90deg,
-    rgba(0, 255, 136, 0.02),
-    rgba(0, 0, 0, 0.01),
-    rgba(0, 255, 136, 0.02)
-  );
-  background-size: 100% 3px, 6px 100%;
-  pointer-events: none;
+.minimal-card:hover {
+  border-color: rgba(16, 185, 129, 0.35);
+  background: #09120b;
 }
 
 .font-code {

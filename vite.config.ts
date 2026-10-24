@@ -13,7 +13,6 @@ export default defineConfig({
       output: {
         manualChunks: {
           vendor: ['react', 'react-dom'],
-          animations: ['framer-motion', 'canvas-confetti'],
           icons: ['lucide-react'],
         },
       },
@@ -21,4 +20,3 @@ export default defineConfig({
     chunkSizeWarningLimit: 800,
   },
 });
-

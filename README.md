@@ -1,56 +1,26 @@
-# Joel Jose - Software Engineer & AI Developer Portfolio
+# Joel Jose - Software Engineer Portfolio
 
-A cutting-edge developer portfolio built with **React**, **TypeScript**, **Tailwind CSS**, and **Framer Motion**, featuring extraordinary developer-centric animations, interactive simulated environments, and authentic vector stack logos.
-
-Built with direct details from **Joel Jose's** resume.
+A clean, minimal, and high-performance developer portfolio built with **React**, **TypeScript**, and **Tailwind CSS**, featuring an elegant green & black developer aesthetic, authentic vector stack logos, and comprehensive details from **Joel Jose's** resume.
 
 ---
 
-## ⚡ Highlights & Extraordinary Animations
+## ⚡ Highlights
 
-1. **Cyber Matrix & Neural Background Canvas**:
-   - Interactive HTML5 canvas with floating developer tokens (`const`, `async/await`, `def`, `Gemini`, `Flutter`, `01`, `git commit`), dynamic node connection mesh, and mouse-reactive gravitational glow.
-
-2. **Interactive Developer Terminal Simulator**:
-   - Live CLI in the hero section supporting commands: `help`, `whoami`, `skills`, `projects`, `edu`, `contact`, `hire`, `gemini <query>`, `clear`, and `sudo`.
-   - Fast one-tap action chips for mobile and desktop visitors.
-   - Interactive hire celebration triggering confetti cascades.
-
-3. **Authentic Vector Tech Logos & Interactive Skill Inspector**:
-   - High-fidelity SVG vector logos for every stack item:
-     - **Languages**: Python, Java, JavaScript, Dart, C++, C, PHP, SQL, HTML
-     - **Frameworks & Cloud**: Flutter, Firebase, Node.js, Docker
-     - **AI & Tools**: Google Gemini API, Git, GitHub
-   - Interactive code inspector showing production code snippets, proficiency meters, and real-world project applications.
-   - Animated infinite logo marquee with hover-pause.
-
-4. **Interactive Academic Project Workstations**:
-   - **AI KTU Notes App**:
-     - Interactive mobile simulator with live Gemini Doubt Solver, KTU Quiz Engine with automated scoring, and Firebase real-time status monitor.
-   - **MeetMash (Google Meet Chrome Extension)**:
-     - Interactive Chrome Extension simulator with live simulated caption feed, `MutationObserver` de-duplication, Gemini action item extraction, persistent checklist state, and instant Markdown export.
-
-5. **Gemini AI Developer Assistant**:
-   - An interactive Gemini 1.5 Pro playground embedded directly into the portfolio where recruiters and visitors can test queries about Joel's engineering credentials, academic standing, and project architecture.
-
-6. **Git Branching Education & Milestones Timeline**:
-   - Interactive version-controlled timeline representing Joel's B.Tech CSE degree (BMCE, CGPA 7.88), 12th Computer Science (CVKMHSS, 86%), Cloud Computing Internship (Networkz Systems), 24h National GenAI Hackathon (MBITS / HexinOX), and IEEE Student Membership.
-
-7. **Synthesized Web Audio Synth (Sound FX)**:
-   - Built-in retro-futuristic sound synthesis for typing, hover blips, and success chimes using the Web Audio API. 100% self-contained (no external audio files), muted by default with an instant navbar toggle (`SFX: ON / OFF`).
-
-8. **Digital Resume Viewer & Print / PDF Modal**:
-   - Faithfully formatted digital version of Joel Jose's resume with direct print / PDF export support.
+- **Clean & Fast**: Lightweight, distraction-free, and optimized for instant loading.
+- **Green & Black Theme**: High-contrast, sleek obsidian black and emerald green aesthetic.
+- **Authentic Stack Logos**: Crisp vector SVG logos for Joel's complete 16+ technical stack (Python, Java, JavaScript, Dart, C++, C, PHP, SQL, HTML, Flutter, Firebase, Node.js, Docker, Gemini API, Git, GitHub).
+- **Academic Projects**: Detailed case study breakdowns for **AI KTU Notes App** and **MeetMash**.
+- **Career & Education Timeline**: Clean chronological timeline covering B.Tech CSE (BMCE), Higher Secondary (CVKMHSS), Cloud Computing Internship, GenAI Hackathon, and IEEE Student Membership.
+- **Digital Resume**: Built-in formatted resume viewer with print & PDF export support.
+- **Direct Contact Channels**: Working contact form with one-click copy email/phone buttons.
 
 ---
 
 ## 🛠️ Tech Stack
 
 - **Framework**: React 19 + TypeScript
-- **Bundler & Tooling**: Vite 6
 - **Styling**: Tailwind CSS
-- **Animations**: Framer Motion, HTML5 Canvas, Canvas Confetti
-- **Audio**: Web Audio API Synthesizer
+- **Bundler**: Vite 6
 - **Icons**: Lucide Icons + Custom Vector SVGs
 
 ---
@@ -76,5 +46,4 @@ Visit `http://localhost:3000` in your browser.
 ```bash
 npm run build
 ```
-
-The optimized static assets will be output to the `dist/` folder, ready for zero-config deployment to Vercel, Netlify, Cloudflare Pages, or GitHub Pages.
+The optimized static build will be generated in `dist/`, ready for instant deployment to Vercel, Netlify, or GitHub Pages.

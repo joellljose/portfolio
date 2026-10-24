@@ -1,7 +1,6 @@
 import React from 'react';
 import { X, Printer, MapPin } from 'lucide-react';
 import { RESUME_DATA } from '../data/resumeData';
-import { soundFx } from '../utils/sound';
 
 interface ResumeModalProps {
   isOpen: boolean;
@@ -12,34 +11,31 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
   if (!isOpen) return null;
 
   const handlePrint = () => {
-    soundFx.playSuccess();
     window.print();
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-md overflow-y-auto">
-      <div className="relative w-full max-w-4xl bg-[#030805] border border-emerald-500/35 rounded-3xl shadow-2xl overflow-hidden my-auto max-h-[92vh] flex flex-col">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-sm overflow-y-auto">
+      <div className="relative w-full max-w-4xl bg-[#030805] border border-emerald-500/35 rounded-2xl shadow-2xl overflow-hidden my-auto max-h-[92vh] flex flex-col">
         {/* Modal Controls Header */}
         <div className="flex items-center justify-between px-6 py-4 bg-[#020503] border-b border-emerald-500/25">
           <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
             <h3 className="text-sm font-mono font-bold text-white">Joel_Jose_Resume.pdf</h3>
           </div>
 
           <div className="flex items-center gap-2">
             <button
               onClick={handlePrint}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-black hover:bg-emerald-950 text-emerald-300 border border-slate-800 hover:border-emerald-500/40 text-xs font-mono transition-colors"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-black hover:bg-emerald-950 text-emerald-300 border border-slate-800 hover:border-emerald-500/40 text-xs font-mono transition-colors"
             >
               <Printer className="w-3.5 h-3.5" />
               <span>Print / PDF</span>
             </button>
             <button
-              onClick={() => {
-                soundFx.playKeyClick();
-                onClose();
-              }}
-              className="p-1.5 rounded-xl bg-black hover:bg-rose-950 text-slate-400 hover:text-rose-400 border border-slate-800 transition-colors"
+              onClick={onClose}
+              className="p-1.5 rounded-lg bg-black hover:bg-rose-950 text-slate-400 hover:text-rose-400 border border-slate-800 transition-colors"
+              aria-label="Close modal"
             >
               <X className="w-4 h-4" />
             </button>

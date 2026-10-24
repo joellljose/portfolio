@@ -1,368 +1,83 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Code2, Smartphone, CheckCircle, Cpu, Sparkles, Zap, Layers, Server } from 'lucide-react';
+import React from 'react';
+import { ExternalLink, CheckCircle2 } from 'lucide-react';
+import { RESUME_DATA } from '../data/resumeData';
 import { TechLogo } from './TechLogos';
-import { KtuAppDemo } from './KtuAppDemo';
-import { MeetMashDemo } from './MeetMashDemo';
-import { soundFx } from '../utils/sound';
 import { GithubIcon } from './SocialIcons';
-import { useViewMode } from '../context/ViewModeContext';
 
 export const ProjectsSection: React.FC = () => {
-  const { isMinimal, setMode } = useViewMode();
-  const [activeProjectTab, setActiveProjectTab] = useState<'all' | 'ktu' | 'meetmash'>('all');
-
   return (
-    <section id="projects" className="py-24 px-4 sm:px-6 lg:px-8 relative max-w-7xl mx-auto">
-      {/* Background Accent */}
-      <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
-
-      {/* Header */}
-      <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black border border-emerald-500/40 text-emerald-400 text-xs font-mono">
-          <Code2 className="w-3.5 h-3.5" />
-          <span>PRODUCTION-GRADE ACADEMIC PROJECTS</span>
-        </div>
-        <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
-          Featured Engineering Work
+    <section id="projects" className="py-16 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto border-t border-emerald-950/60">
+      <div className="mb-8">
+        <span className="text-xs font-mono text-emerald-400 font-semibold uppercase tracking-wider block mb-1">
+          Featured Work
+        </span>
+        <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+          Academic &amp; Engineering Projects
         </h2>
-        <p className="text-slate-400 text-sm sm:text-base">
-          Real-world applications integrating Google Gemini API, Flutter mobile engineering, and browser extensions.
+        <p className="text-sm text-slate-400 mt-1">
+          Production-grade applications built with Google Gemini API, Flutter mobile, and Chrome Extension APIs.
         </p>
-
-        {/* Project Selector Tabs */}
-        <div className="flex items-center justify-center gap-2 pt-3">
-          {[
-            { id: 'all', label: 'All Projects (2)' },
-            { id: 'ktu', label: 'AI KTU Notes App' },
-            { id: 'meetmash', label: 'MeetMash Chrome Extension' },
-          ].map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => {
-                soundFx.playHover();
-                setActiveProjectTab(tab.id as typeof activeProjectTab);
-              }}
-              className={`px-4 py-2 rounded-xl text-xs font-mono transition-all ${
-                activeProjectTab === tab.id
-                  ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/60 shadow-lg shadow-emerald-500/15'
-                  : 'bg-black/60 text-slate-400 border border-slate-800 hover:text-emerald-300 hover:border-emerald-500/40'
-              }`}
-            >
-              {tab.label}
-            </button>
-          ))}
-        </div>
       </div>
 
-      <div className="space-y-16">
-        {/* Project 1: AI KTU Notes App */}
-        {(activeProjectTab === 'all' || activeProjectTab === 'ktu') && (
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="cyber-card rounded-3xl p-6 sm:p-8 border border-emerald-500/25 relative overflow-hidden"
+      <div className="space-y-6">
+        {RESUME_DATA.projects.map((project) => (
+          <div
+            key={project.id}
+            className="minimal-card p-6 sm:p-7 space-y-5"
           >
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-              {/* Left Column: Project Details from Resume */}
-              <div className="lg:col-span-6 space-y-5">
-                <div className="flex flex-wrap items-center gap-2">
-                  <span className="px-3 py-1 rounded-full bg-emerald-950/80 border border-emerald-500/50 text-emerald-300 text-xs font-mono font-semibold">
-                    Flagship Mobile Application
-                  </span>
-                  <span className="px-2.5 py-1 rounded-full bg-black border border-slate-800 text-slate-400 text-xs font-mono">
-                    Academic Project
-                  </span>
-                </div>
-
-                <div>
-                  <h3 className="text-2xl sm:text-3xl font-extrabold text-white">
-                    AI KTU Notes App
+            {/* Project Header */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-emerald-950/60">
+              <div>
+                <div className="flex items-center gap-2.5">
+                  <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+                    {project.title}
                   </h3>
-                  <p className="text-emerald-400 font-mono text-xs mt-1">
-                    Flutter • Dart • Python • Firebase • Google Gemini API
-                  </p>
+                  <span className="px-2 py-0.5 rounded text-[11px] font-mono bg-emerald-950/80 text-emerald-300 border border-emerald-800">
+                    {project.badge}
+                  </span>
                 </div>
-
-                <p className="text-slate-300 text-sm leading-relaxed font-sans">
-                  Architected an AI-powered KTU study application combining syllabus-based notes, quizzes,
-                  community discussions, and personalized learning assistance powered by the Google Gemini API.
+                <p className="text-xs font-mono text-emerald-400 mt-1">
+                  {project.tagline}
                 </p>
-
-                {/* Resume Highlights */}
-                <div className="space-y-3 text-xs text-slate-300 font-sans">
-                  <div className="flex items-start gap-2.5">
-                    <CheckCircle className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                    <span>
-                      <strong className="text-slate-100">Intelligent Academic Assistant:</strong> Architected a cross-platform mobile application using Flutter, Dart, Firebase, and Gemini API combining syllabus notes, quizzes, and personalized learning tools.
-                    </span>
-                  </div>
-                  <div className="flex items-start gap-2.5">
-                    <CheckCircle className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                    <span>
-                      <strong className="text-slate-100">Gemini-Powered Resolution:</strong> Integrated doubt resolution, code explanation, summarization, diagram generation, and semantic search directly in-app.
-                    </span>
-                  </div>
-                  <div className="flex items-start gap-2.5">
-                    <CheckCircle className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                    <span>
-                      <strong className="text-slate-100">Firebase Cloud Backend:</strong> Implemented Firebase Auth, Firestore real-time synchronization, Cloud Storage, and role-based access control (RBAC) for academic resources.
-                    </span>
-                  </div>
-                </div>
-
-                {/* Stack Logos Bar */}
-                <div className="pt-2">
-                  <span className="text-[11px] font-mono text-emerald-500/80 block mb-2 uppercase tracking-wider">
-                    Technologies Applied:
-                  </span>
-                  <div className="flex flex-wrap gap-2">
-                    {['flutter', 'dart', 'python', 'firebase', 'gemini'].map((tech) => (
-                      <div
-                        key={tech}
-                        className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-black border border-slate-800 text-slate-300 text-xs font-mono"
-                      >
-                        <TechLogo name={tech} size={16} />
-                        <span className="capitalize">{tech === 'gemini' ? 'Gemini API' : tech}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Links */}
-                <div className="flex items-center gap-3 pt-3">
-                  <a
-                    href="https://github.com/joellljose"
-                    target="_blank"
-                    rel="noreferrer"
-                    onMouseEnter={() => soundFx.playHover()}
-                    className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-mono text-xs font-bold transition-colors shadow-md shadow-emerald-500/20"
-                  >
-                    <GithubIcon className="w-4 h-4" />
-                    <span>GitHub Repository</span>
-                  </a>
-                  <a
-                    href="#ktu-interactive"
-                    onClick={() => soundFx.playHover()}
-                    className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-black hover:bg-emerald-950/40 text-slate-200 border border-slate-800 hover:border-emerald-500/40 text-xs font-mono transition-colors"
-                  >
-                    <Smartphone className="w-4 h-4 text-emerald-400" />
-                    <span>Live Simulator Ready</span>
-                  </a>
-                </div>
               </div>
 
-              {/* Right Column: Interactive Mobile Simulator OR Minimal Spec Overview */}
-              <div className="lg:col-span-6" id="ktu-interactive">
-                {isMinimal ? (
-                  <div className="p-6 rounded-2xl bg-black border border-emerald-500/30 space-y-4">
-                    <div className="flex items-center justify-between pb-3 border-b border-emerald-950">
-                      <div className="flex items-center gap-2 text-emerald-400 font-mono text-xs font-bold">
-                        <Server className="w-4 h-4" />
-                        <span>System Architecture &amp; Data Pipeline</span>
-                      </div>
-                      <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-950 text-emerald-300">
-                        Production Spec
-                      </span>
-                    </div>
-
-                    <div className="space-y-2 text-xs font-mono">
-                      <div className="p-2.5 rounded-xl bg-[#040c06] border border-emerald-900/60 flex items-center justify-between">
-                        <span className="text-slate-300">Client Frontend:</span>
-                        <span className="text-emerald-400">Flutter Mobile &amp; Dart</span>
-                      </div>
-                      <div className="p-2.5 rounded-xl bg-[#040c06] border border-emerald-900/60 flex items-center justify-between">
-                        <span className="text-slate-300">AI Engine:</span>
-                        <span className="text-emerald-400">Google Gemini API</span>
-                      </div>
-                      <div className="p-2.5 rounded-xl bg-[#040c06] border border-emerald-900/60 flex items-center justify-between">
-                        <span className="text-slate-300">Cloud Storage &amp; DB:</span>
-                        <span className="text-emerald-400">Firebase Firestore (Realtime)</span>
-                      </div>
-                      <div className="p-2.5 rounded-xl bg-[#040c06] border border-emerald-900/60 flex items-center justify-between">
-                        <span className="text-slate-300">Security Architecture:</span>
-                        <span className="text-emerald-400">Firebase Auth &amp; RBAC</span>
-                      </div>
-                    </div>
-
-                    <div className="pt-2">
-                      <button
-                        onClick={() => {
-                          setMode('advanced');
-                          soundFx.playSuccess();
-                        }}
-                        className="w-full py-2.5 px-4 rounded-xl bg-emerald-950/70 hover:bg-emerald-900 text-emerald-300 border border-emerald-500/40 text-xs font-mono font-bold flex items-center justify-center gap-2 transition-colors"
-                      >
-                        <Zap className="w-3.5 h-3.5 text-emerald-400" />
-                        <span>Launch Live Interactive Simulator &rarr;</span>
-                      </button>
-                    </div>
-                  </div>
-                ) : (
-                  <KtuAppDemo />
-                )}
-              </div>
+              {/* GitHub Link */}
+              <a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-black hover:bg-emerald-950/60 text-slate-200 hover:text-emerald-300 border border-slate-800 hover:border-emerald-500/40 text-xs font-mono transition-colors self-start sm:self-auto"
+              >
+                <GithubIcon className="w-4 h-4" />
+                <span>Project Code</span>
+                <ExternalLink className="w-3 h-3 text-slate-500 ml-1" />
+              </a>
             </div>
-          </motion.div>
-        )}
 
-        {/* Project 2: MeetMash */}
-        {(activeProjectTab === 'all' || activeProjectTab === 'meetmash') && (
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="cyber-card rounded-3xl p-6 sm:p-8 border border-emerald-500/25 relative overflow-hidden"
-          >
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-              {/* Left Column: Project Details from Resume */}
-              <div className="lg:col-span-6 space-y-5">
-                <div className="flex flex-wrap items-center gap-2">
-                  <span className="px-3 py-1 rounded-full bg-emerald-950/80 border border-emerald-500/50 text-emerald-300 text-xs font-mono font-semibold">
-                    Chrome Extension &amp; AI Productivity
-                  </span>
-                  <span className="px-2.5 py-1 rounded-full bg-black border border-slate-800 text-slate-400 text-xs font-mono">
-                    Academic Project
-                  </span>
+            {/* Resume Highlights */}
+            <div className="space-y-2.5 text-xs sm:text-sm text-slate-300 font-sans">
+              {project.highlights.map((bullet, idx) => (
+                <div key={idx} className="flex items-start gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                  <span className="leading-relaxed">{bullet}</span>
                 </div>
-
-                <div>
-                  <h3 className="text-2xl sm:text-3xl font-extrabold text-white">
-                    MeetMash
-                  </h3>
-                  <p className="text-emerald-400 font-mono text-xs mt-1">
-                    JavaScript • Google Gemini API • Chrome APIs • MutationObserver
-                  </p>
-                </div>
-
-                <p className="text-slate-300 text-sm leading-relaxed font-sans">
-                  Built an AI-powered Google Meet Chrome extension that converts real-time meeting conversations
-                  into actionable checklists, priority matrices, and executive summaries with one click.
-                </p>
-
-                {/* Resume Highlights */}
-                <div className="space-y-3 text-xs text-slate-300 font-sans">
-                  <div className="flex items-start gap-2.5">
-                    <CheckCircle className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                    <span>
-                      <strong className="text-slate-100">Live Caption Intelligence:</strong> Built an AI Chrome extension capturing live captions from Google Meet to generate executive summaries, topic insights, and actionable meeting tasks.
-                    </span>
-                  </div>
-                  <div className="flex items-start gap-2.5">
-                    <CheckCircle className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                    <span>
-                      <strong className="text-slate-100">Real-Time De-duplication:</strong> Implemented real-time transcript de-duplication with DOM MutationObserver and persistent task tracking via browser local storage.
-                    </span>
-                  </div>
-                  <div className="flex items-start gap-2.5">
-                    <CheckCircle className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                    <span>
-                      <strong className="text-slate-100">Automated Action Extraction:</strong> Developed deadline detection, priority tagging, and automated Markdown export for instant developer collaboration.
-                    </span>
-                  </div>
-                </div>
-
-                {/* Stack Logos Bar */}
-                <div className="pt-2">
-                  <span className="text-[11px] font-mono text-emerald-500/80 block mb-2 uppercase tracking-wider">
-                    Technologies Applied:
-                  </span>
-                  <div className="flex flex-wrap gap-2">
-                    {['javascript', 'gemini', 'html'].map((tech) => (
-                      <div
-                        key={tech}
-                        className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-black border border-slate-800 text-slate-300 text-xs font-mono"
-                      >
-                        <TechLogo name={tech} size={16} />
-                        <span className="capitalize">{tech === 'gemini' ? 'Gemini API' : tech}</span>
-                      </div>
-                    ))}
-                    <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-black border border-slate-800 text-slate-300 text-xs font-mono">
-                      <Cpu className="w-3.5 h-3.5 text-emerald-400" />
-                      <span>Chrome Extension APIs</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Links */}
-                <div className="flex items-center gap-3 pt-3">
-                  <a
-                    href="https://github.com/joellljose"
-                    target="_blank"
-                    rel="noreferrer"
-                    onMouseEnter={() => soundFx.playHover()}
-                    className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-mono text-xs font-bold transition-colors shadow-md shadow-emerald-500/20"
-                  >
-                    <GithubIcon className="w-4 h-4" />
-                    <span>GitHub Repository</span>
-                  </a>
-                  <a
-                    href="#meetmash-interactive"
-                    onClick={() => soundFx.playHover()}
-                    className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-black hover:bg-emerald-950/40 text-slate-200 border border-slate-800 hover:border-emerald-500/40 text-xs font-mono transition-colors"
-                  >
-                    <Sparkles className="w-4 h-4 text-emerald-400" />
-                    <span>Live Simulator Ready</span>
-                  </a>
-                </div>
-              </div>
-
-              {/* Right Column: Live Interactive Chrome Extension Simulator OR Minimal Spec Overview */}
-              <div className="lg:col-span-6" id="meetmash-interactive">
-                {isMinimal ? (
-                  <div className="p-6 rounded-2xl bg-black border border-emerald-500/30 space-y-4">
-                    <div className="flex items-center justify-between pb-3 border-b border-emerald-950">
-                      <div className="flex items-center gap-2 text-emerald-400 font-mono text-xs font-bold">
-                        <Layers className="w-4 h-4" />
-                        <span>Extension Runtime Architecture</span>
-                      </div>
-                      <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-950 text-emerald-300">
-                        Production Spec
-                      </span>
-                    </div>
-
-                    <div className="space-y-2 text-xs font-mono">
-                      <div className="p-2.5 rounded-xl bg-[#040c06] border border-emerald-900/60 flex items-center justify-between">
-                        <span className="text-slate-300">Runtime Target:</span>
-                        <span className="text-emerald-400">Chrome Extension Manifest V3</span>
-                      </div>
-                      <div className="p-2.5 rounded-xl bg-[#040c06] border border-emerald-900/60 flex items-center justify-between">
-                        <span className="text-slate-300">DOM Ingestion:</span>
-                        <span className="text-emerald-400">MutationObserver (De-duplicated)</span>
-                      </div>
-                      <div className="p-2.5 rounded-xl bg-[#040c06] border border-emerald-900/60 flex items-center justify-between">
-                        <span className="text-slate-300">AI Intelligence:</span>
-                        <span className="text-emerald-400">Google Gemini API</span>
-                      </div>
-                      <div className="p-2.5 rounded-xl bg-[#040c06] border border-emerald-900/60 flex items-center justify-between">
-                        <span className="text-slate-300">Export &amp; Persistence:</span>
-                        <span className="text-emerald-400">Browser LocalStorage + Markdown</span>
-                      </div>
-                    </div>
-
-                    <div className="pt-2">
-                      <button
-                        onClick={() => {
-                          setMode('advanced');
-                          soundFx.playSuccess();
-                        }}
-                        className="w-full py-2.5 px-4 rounded-xl bg-emerald-950/70 hover:bg-emerald-900 text-emerald-300 border border-emerald-500/40 text-xs font-mono font-bold flex items-center justify-center gap-2 transition-colors"
-                      >
-                        <Zap className="w-3.5 h-3.5 text-emerald-400" />
-                        <span>Launch Live Interactive Simulator &rarr;</span>
-                      </button>
-                    </div>
-                  </div>
-                ) : (
-                  <MeetMashDemo />
-                )}
-              </div>
+              ))}
             </div>
-          </motion.div>
-        )}
+
+            {/* Tech Stack Pills with Authentic Logos */}
+            <div className="pt-2 flex flex-wrap items-center gap-2">
+              {project.stack.map((tech) => (
+                <div
+                  key={tech}
+                  className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-black border border-slate-800 text-[11px] font-mono text-slate-300"
+                >
+                  <TechLogo name={tech} size={14} />
+                  <span>{tech}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );

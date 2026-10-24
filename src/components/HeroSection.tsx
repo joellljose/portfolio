@@ -1,12 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { Code2, Sparkles, Download, ArrowRight, Mail, MapPin, Award, Terminal as TerminalIcon, CheckCircle2, GraduationCap, Zap } from 'lucide-react';
+import React from 'react';
+import { ArrowRight, Download, Mail, Phone, MapPin, GraduationCap, Code2 } from 'lucide-react';
 import { RESUME_DATA } from '../data/resumeData';
-import { Terminal } from './Terminal';
-import { soundFx } from '../utils/sound';
 import { GithubIcon, LinkedinIcon } from './SocialIcons';
-import { useViewMode } from '../context/ViewModeContext';
-import confetti from 'canvas-confetti';
 
 interface HeroProps {
   onOpenResume: () => void;
@@ -14,321 +9,145 @@ interface HeroProps {
   onOpenContact: () => void;
 }
 
-const ROLES = [
-  "Aspiring Software Engineer",
-  "Google Gemini AI Developer",
-  "Flutter & Mobile Architect",
-  "Python & JavaScript Engineer",
-];
-
 export const HeroSection: React.FC<HeroProps> = ({ onOpenResume, onExploreProjects, onOpenContact }) => {
-  const { isMinimal, setMode } = useViewMode();
-  const [roleIndex, setRoleIndex] = useState(0);
-  const [currentText, setCurrentText] = useState('');
-  const [isDeleting, setIsDeleting] = useState(false);
-
-  // Typewriter effect for developer titles
-  useEffect(() => {
-    const fullText = ROLES[roleIndex];
-    const speed = isDeleting ? 40 : 80;
-
-    const timer = setTimeout(() => {
-      if (!isDeleting && currentText === fullText) {
-        setTimeout(() => setIsDeleting(true), 1800);
-      } else if (isDeleting && currentText === '') {
-        setIsDeleting(false);
-        setRoleIndex((prev) => (prev + 1) % ROLES.length);
-      } else {
-        setCurrentText(
-          isDeleting
-            ? fullText.substring(0, currentText.length - 1)
-            : fullText.substring(0, currentText.length + 1)
-        );
-      }
-    }, speed);
-
-    return () => clearTimeout(timer);
-  }, [currentText, isDeleting, roleIndex]);
-
-  const triggerHireCelebration = () => {
-    soundFx.playSuccess();
-    confetti({
-      particleCount: 100,
-      spread: 80,
-      origin: { y: 0.6 },
-      colors: ['#00ff88', '#10b981', '#22c55e', '#34d399'],
-    });
-    onOpenContact();
-  };
-
   return (
-    <section id="hero" className="relative min-h-[92vh] flex items-center justify-center pt-28 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
-      {/* Ambient background green glow orbs */}
-      <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none animate-pulse-slow" />
-      <div className="absolute top-1/3 right-1/4 -translate-y-1/2 w-96 h-96 bg-green-500/10 rounded-full blur-3xl pointer-events-none animate-pulse-slow" />
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 w-80 h-80 bg-emerald-500/8 rounded-full blur-3xl pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
-        {/* Left Column: Developer Information & Intro */}
-        <div className="lg:col-span-7 space-y-6">
-          {/* Status Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-950/70 border border-emerald-500/40 text-emerald-300 text-xs font-mono shadow-sm"
-          >
-            <span className="relative flex h-2.5 w-2.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400" />
-            </span>
-            <span>Available for Hire • S/W Engineer &amp; Internships</span>
-          </motion.div>
-
-          {/* Main Title & Typewriter */}
-          <div className="space-y-2">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="flex items-center gap-3"
-            >
-              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white font-sans">
-                JOEL <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-green-300 to-teal-400 text-glow-green">JOSE</span>
-              </h1>
-            </motion.div>
-
-            {/* Dynamic Role Banner */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="h-10 flex items-center gap-2 text-xl sm:text-2xl font-mono text-emerald-300"
-            >
-              <span className="text-emerald-400 font-bold">&gt;</span>
-              <span className="font-semibold text-slate-100">{currentText}</span>
-              <span className="w-2.5 h-6 bg-emerald-400 animate-pulse inline-block" />
-            </motion.div>
+    <section id="about" className="pt-28 pb-16 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        {/* Left 8 Cols: Main Bio & Details */}
+        <div className="lg:col-span-8 space-y-6">
+          {/* Status pill */}
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/60 border border-emerald-500/30 text-emerald-300 text-xs font-mono">
+            <span className="w-2 h-2 rounded-full bg-emerald-400" />
+            <span>Available for Full-Time Roles &amp; Internships</span>
           </div>
 
-          {/* Location & College Tagline */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.25 }}
-            className="flex flex-wrap items-center gap-4 text-xs font-mono text-slate-400"
-          >
-            <div className="flex items-center gap-1.5 text-slate-300">
-              <MapPin className="w-3.5 h-3.5 text-emerald-400" />
-              <span>Kollam, Kerala, India</span>
+          {/* Heading */}
+          <div className="space-y-2">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight">
+              Joel <span className="text-emerald-400">Jose</span>
+            </h1>
+            <p className="text-lg sm:text-xl font-medium text-slate-300">
+              Aspiring Software Engineer &amp; AI Developer
+            </p>
+            <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-slate-400 pt-1">
+              <span className="flex items-center gap-1.5 text-slate-300">
+                <MapPin className="w-3.5 h-3.5 text-emerald-400" />
+                <span>Kollam, Kerala, India</span>
+              </span>
+              <span>•</span>
+              <span className="flex items-center gap-1.5 text-slate-300">
+                <GraduationCap className="w-3.5 h-3.5 text-emerald-400" />
+                <span>B.Tech CSE @ BMCE (CGPA: 7.88)</span>
+              </span>
             </div>
-            <div className="h-3 w-px bg-emerald-900/60" />
-            <div className="flex items-center gap-1.5 text-slate-300">
-              <Award className="w-3.5 h-3.5 text-green-400" />
-              <span>B.Tech CSE @ BMCE (CGPA 7.88)</span>
-            </div>
-          </motion.div>
+          </div>
 
           {/* Professional Summary from Resume */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-2xl font-sans"
-          >
-            Final-year B.Tech Computer Science student specializing in building AI-integrated systems,
-            modern mobile applications with Flutter, and robust software tools powered by the{' '}
-            <span className="text-emerald-300 font-semibold underline decoration-emerald-500/50 underline-offset-4">Google Gemini API</span>.
-            Dedicated to clean architecture, data structures, and production-grade engineering.
-          </motion.p>
+          <p className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-2xl">
+            {RESUME_DATA.personal.summary}
+          </p>
 
-          {/* Action CTAs */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-wrap items-center gap-3 pt-2"
-          >
+          {/* Action Buttons */}
+          <div className="flex flex-wrap items-center gap-3 pt-2">
             <button
-              onClick={triggerHireCelebration}
-              onMouseEnter={() => soundFx.playHover()}
-              className="group relative inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-400 to-green-500 text-black font-extrabold text-sm tracking-wide shadow-lg shadow-emerald-500/25 hover:shadow-emerald-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all"
+              onClick={onOpenContact}
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-black font-bold text-xs sm:text-sm transition-colors"
             >
-              <Sparkles className="w-4 h-4 text-black" />
-              <span>Hire Joel</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              <span>Get in Touch</span>
+              <ArrowRight className="w-4 h-4" />
             </button>
 
             <button
-              onClick={() => {
-                soundFx.playHover();
-                onExploreProjects();
-              }}
-              className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-black/80 hover:bg-emerald-950/40 text-slate-200 border border-slate-800 hover:border-emerald-500/50 text-sm font-medium transition-all"
+              onClick={onExploreProjects}
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#070e09] hover:bg-[#0c1810] text-slate-200 border border-slate-800 hover:border-emerald-500/40 text-xs sm:text-sm font-medium transition-colors"
             >
               <Code2 className="w-4 h-4 text-emerald-400" />
-              <span>Explore Projects</span>
+              <span>View Projects</span>
             </button>
 
             <button
-              onClick={() => {
-                soundFx.playHover();
-                onOpenResume();
-              }}
-              className="inline-flex items-center gap-2 px-4 py-3 rounded-xl bg-black/50 hover:bg-emerald-950/30 text-slate-300 hover:text-white border border-slate-800 hover:border-slate-700 text-sm font-mono transition-all"
+              onClick={onOpenResume}
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#070e09] hover:bg-[#0c1810] text-slate-300 hover:text-white border border-slate-800 text-xs sm:text-sm font-mono transition-colors"
             >
               <Download className="w-4 h-4 text-emerald-400" />
-              <span>Resume</span>
+              <span>Resume (PDF)</span>
             </button>
-          </motion.div>
+          </div>
 
-          {/* Social and Quick Links */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="flex items-center gap-4 pt-4 border-t border-emerald-950/60 text-slate-400"
-          >
-            <span className="text-xs font-mono text-slate-500">Connect:</span>
+          {/* Quick Contact Line */}
+          <div className="pt-4 border-t border-emerald-950/60 flex flex-wrap items-center gap-4 text-xs font-mono text-slate-400">
+            <a
+              href={`mailto:${RESUME_DATA.personal.email}`}
+              className="flex items-center gap-1.5 hover:text-emerald-400 transition-colors text-slate-300"
+            >
+              <Mail className="w-3.5 h-3.5 text-emerald-400" />
+              <span>{RESUME_DATA.personal.email}</span>
+            </a>
+            <span className="text-slate-700">•</span>
+            <a
+              href={`tel:${RESUME_DATA.personal.phone}`}
+              className="flex items-center gap-1.5 hover:text-emerald-400 transition-colors text-slate-300"
+            >
+              <Phone className="w-3.5 h-3.5 text-emerald-400" />
+              <span>{RESUME_DATA.personal.phone}</span>
+            </a>
+            <span className="text-slate-700">•</span>
             <a
               href={RESUME_DATA.personal.github}
               target="_blank"
               rel="noreferrer"
-              onMouseEnter={() => soundFx.playHover()}
-              className="p-2 rounded-lg bg-black hover:bg-emerald-950/60 text-slate-300 hover:text-emerald-400 border border-slate-800 hover:border-emerald-500/40 transition-colors"
-              title="GitHub Profile"
+              className="flex items-center gap-1.5 hover:text-emerald-400 transition-colors text-slate-300"
             >
-              <GithubIcon className="w-4 h-4" />
+              <GithubIcon className="w-3.5 h-3.5 text-emerald-400" />
+              <span>github/{RESUME_DATA.personal.githubUsername}</span>
             </a>
+            <span className="text-slate-700">•</span>
             <a
               href={RESUME_DATA.personal.linkedin}
               target="_blank"
               rel="noreferrer"
-              onMouseEnter={() => soundFx.playHover()}
-              className="p-2 rounded-lg bg-black hover:bg-emerald-950/60 text-slate-300 hover:text-emerald-400 border border-slate-800 hover:border-emerald-500/40 transition-colors"
-              title="LinkedIn Profile"
+              className="flex items-center gap-1.5 hover:text-emerald-400 transition-colors text-slate-300"
             >
-              <LinkedinIcon className="w-4 h-4" />
+              <LinkedinIcon className="w-3.5 h-3.5 text-emerald-400" />
+              <span>linkedin/{RESUME_DATA.personal.linkedinUsername}</span>
             </a>
-            <a
-              href={`mailto:${RESUME_DATA.personal.email}`}
-              onMouseEnter={() => soundFx.playHover()}
-              className="p-2 rounded-lg bg-black hover:bg-emerald-950/60 text-slate-300 hover:text-emerald-400 border border-slate-800 hover:border-emerald-500/40 transition-colors"
-              title="Send Direct Email"
-            >
-              <Mail className="w-4 h-4" />
-            </a>
-            <div className="text-xs font-mono text-emerald-400/80 ml-auto hidden sm:block">
-              {RESUME_DATA.personal.email}
-            </div>
-          </motion.div>
+          </div>
         </div>
 
-        {/* Right Column: Interactive Developer Terminal OR Minimal Executive Card */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7, delay: 0.3 }}
-          className="lg:col-span-5 relative"
-        >
-          {isMinimal ? (
-            /* Minimal Executive Recruiter View */
-            <div className="cyber-card rounded-2xl p-6 border border-emerald-500/30 bg-[#030805] space-y-5">
-              <div className="flex items-center justify-between pb-3 border-b border-emerald-950">
-                <div className="flex items-center gap-2">
-                  <div className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
-                  <span className="text-xs font-mono font-bold text-white uppercase tracking-wider">
-                    Executive Profile Card
+        {/* Right 4 Cols: Quick Stats & Role Focus */}
+        <div className="lg:col-span-4 space-y-4">
+          <div className="minimal-card p-5 space-y-4">
+            <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-emerald-400">
+              Overview &amp; Credentials
+            </h3>
+
+            <div className="grid grid-cols-2 gap-3">
+              {RESUME_DATA.stats.map((s) => (
+                <div key={s.label} className="p-3 rounded-lg bg-black/60 border border-emerald-950">
+                  <div className="text-xl font-bold font-mono text-emerald-400">{s.value}</div>
+                  <div className="text-xs font-medium text-slate-200 mt-0.5">{s.label}</div>
+                  <div className="text-[10px] text-slate-500">{s.change}</div>
+                </div>
+              ))}
+            </div>
+
+            <div className="pt-2 border-t border-emerald-950 space-y-2">
+              <span className="text-[11px] font-mono text-slate-400 block">
+                Target Roles:
+              </span>
+              <div className="flex flex-wrap gap-1.5">
+                {RESUME_DATA.personal.openToRoles.map((role) => (
+                  <span
+                    key={role}
+                    className="px-2 py-0.5 rounded text-[11px] font-mono bg-emerald-950/50 text-emerald-300 border border-emerald-900/60"
+                  >
+                    {role}
                   </span>
-                </div>
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-800">
-                  Minimal Mode
-                </span>
-              </div>
-
-              {/* Core Information Snapshot */}
-              <div className="space-y-3 text-xs">
-                <div className="p-3 rounded-xl bg-black/60 border border-slate-800 space-y-1.5">
-                  <div className="flex items-center gap-2 text-emerald-400 font-semibold font-mono">
-                    <GraduationCap className="w-4 h-4" />
-                    <span>Education &amp; Academic Honors</span>
-                  </div>
-                  <p className="text-slate-300 font-sans">
-                    B.Tech in Computer Science Engineering (2023–Present)
-                  </p>
-                  <p className="text-[11px] font-mono text-slate-400">
-                    Baselios Mathews II College of Engineering • <span className="text-emerald-400 font-bold">CGPA: 7.88</span>
-                  </p>
-                </div>
-
-                <div className="p-3 rounded-xl bg-black/60 border border-slate-800 space-y-1.5">
-                  <div className="flex items-center gap-2 text-emerald-400 font-semibold font-mono">
-                    <CheckCircle2 className="w-4 h-4" />
-                    <span>Verified Project Highlights</span>
-                  </div>
-                  <ul className="text-slate-300 space-y-1 font-sans text-[11px]">
-                    <li>• <strong>AI KTU Notes App:</strong> Flutter, Dart, Firebase &amp; Gemini API</li>
-                    <li>• <strong>MeetMash:</strong> Google Meet Chrome Extension &amp; Gemini AI</li>
-                  </ul>
-                </div>
-              </div>
-
-              {/* Target Roles */}
-              <div>
-                <span className="text-[10px] font-mono text-emerald-500/80 uppercase block mb-1.5">
-                  Open For Full-Time &amp; Internship Roles:
-                </span>
-                <div className="flex flex-wrap gap-1.5">
-                  {['Software Engineer', 'Full-Stack Developer', 'AI / Gemini Builder', 'Flutter Engineer'].map((r) => (
-                    <span key={r} className="px-2 py-0.5 rounded-md bg-emerald-950/70 border border-emerald-800/60 text-[10.5px] font-mono text-emerald-300">
-                      {r}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Quick switch banner */}
-              <div className="pt-2 border-t border-emerald-950 flex items-center justify-between text-[11px] font-mono text-slate-400">
-                <span>Want live CLI &amp; simulators?</span>
-                <button
-                  onClick={() => setMode('advanced')}
-                  className="text-emerald-400 hover:underline flex items-center gap-1 font-bold"
-                >
-                  <Zap className="w-3 h-3" />
-                  <span>Switch to Advanced &rarr;</span>
-                </button>
+                ))}
               </div>
             </div>
-          ) : (
-            /* Advanced Mode with Interactive Terminal */
-            <>
-              {/* Subtle decoration elements */}
-              <div className="absolute -top-3 -right-3 px-3 py-1 bg-emerald-950/80 border border-emerald-500/40 rounded-lg text-[10px] font-mono text-emerald-300 backdrop-blur-sm z-20 flex items-center gap-1.5 shadow-lg">
-                <TerminalIcon className="w-3 h-3 text-emerald-400 animate-pulse" />
-                <span>Interactive Terminal</span>
-              </div>
-
-              <Terminal />
-            </>
-          )}
-
-          {/* Quick Stats Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-4">
-            {RESUME_DATA.stats.map((s, idx) => (
-              <motion.div
-                key={s.label}
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.4 + idx * 0.1 }}
-                className="p-3 rounded-xl bg-black/80 border border-slate-800 hover:border-emerald-500/40 transition-all text-center"
-              >
-                <div className="text-xl font-mono font-bold text-emerald-400">{s.value}</div>
-                <div className="text-[11px] font-medium text-slate-200">{s.label}</div>
-                <div className="text-[10px] text-slate-500 truncate">{s.change}</div>
-              </motion.div>
-            ))}
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
