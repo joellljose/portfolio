@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { useViewMode } from '../context/ViewModeContext';
 
 interface Particle {
   x: number;
@@ -26,10 +27,13 @@ const COLORS = [
 ];
 
 export const MatrixBackground: React.FC = () => {
+  const { isMinimal } = useViewMode();
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const mouseRef = useRef<{ x: number; y: number }>({ x: -1000, y: -1000 });
 
   useEffect(() => {
+    if (isMinimal) return;
+
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
@@ -165,7 +169,15 @@ export const MatrixBackground: React.FC = () => {
       document.removeEventListener('mouseleave', handleMouseLeave);
       cancelAnimationFrame(animationFrameId);
     };
-  }, []);
+  }, [isMinimal]);
+
+  if (isMinimal) {
+    return (
+      <div className="fixed inset-0 pointer-events-none z-0 opacity-15">
+        <div className="w-full h-full bg-[radial-gradient(#10b981_1px,transparent_1px)] [background-size:32px_32px]" />
+      </div>
+    );
+  }
 
   return (
     <canvas

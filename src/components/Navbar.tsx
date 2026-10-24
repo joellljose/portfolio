@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Volume2, VolumeX, Menu, X, FileText } from 'lucide-react';
 import { soundFx } from '../utils/sound';
+import { ModeToggle } from './ModeToggle';
 
 interface NavbarProps {
   onOpenResume: () => void;
@@ -73,7 +74,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
         </nav>
 
         {/* Actions Right */}
-        <div className="hidden sm:flex items-center gap-3">
+        <div className="hidden sm:flex items-center gap-2.5">
+          {/* Mode Switcher: Advanced vs Minimal */}
+          <ModeToggle variant="navbar" />
+
           {/* Sound FX Toggle */}
           <button
             onClick={toggleSound}
@@ -144,7 +148,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
               {link.label}
             </a>
           ))}
-          <div className="pt-3 border-t border-slate-800">
+          <div className="pt-3 border-t border-slate-800 space-y-3">
+            <div className="flex items-center justify-between">
+              <span className="text-slate-400 text-xs">Portfolio View:</span>
+              <ModeToggle variant="navbar" />
+            </div>
             <button
               onClick={() => {
                 setMobileMenuOpen(false);

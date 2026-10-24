@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Code2, Sparkles, Download, ArrowRight, Mail, MapPin, Award, Terminal as TerminalIcon } from 'lucide-react';
+import { Code2, Sparkles, Download, ArrowRight, Mail, MapPin, Award, Terminal as TerminalIcon, CheckCircle2, GraduationCap, Zap } from 'lucide-react';
 import { RESUME_DATA } from '../data/resumeData';
 import { Terminal } from './Terminal';
 import { soundFx } from '../utils/sound';
 import { GithubIcon, LinkedinIcon } from './SocialIcons';
+import { useViewMode } from '../context/ViewModeContext';
 import confetti from 'canvas-confetti';
 
 interface HeroProps {
@@ -21,6 +22,7 @@ const ROLES = [
 ];
 
 export const HeroSection: React.FC<HeroProps> = ({ onOpenResume, onExploreProjects, onOpenContact }) => {
+  const { isMinimal, setMode } = useViewMode();
   const [roleIndex, setRoleIndex] = useState(0);
   const [currentText, setCurrentText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
@@ -222,22 +224,95 @@ export const HeroSection: React.FC<HeroProps> = ({ onOpenResume, onExploreProjec
           </motion.div>
         </div>
 
-        {/* Right Column: Live Interactive Developer Terminal */}
+        {/* Right Column: Interactive Developer Terminal OR Minimal Executive Card */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.7, delay: 0.3 }}
           className="lg:col-span-5 relative"
         >
-          {/* Subtle decoration elements */}
-          <div className="absolute -top-3 -right-3 px-3 py-1 bg-emerald-950/80 border border-emerald-500/40 rounded-lg text-[10px] font-mono text-emerald-300 backdrop-blur-sm z-20 flex items-center gap-1.5 shadow-lg">
-            <TerminalIcon className="w-3 h-3 text-emerald-400 animate-pulse" />
-            <span>Interactive Terminal</span>
-          </div>
+          {isMinimal ? (
+            /* Minimal Executive Recruiter View */
+            <div className="cyber-card rounded-2xl p-6 border border-emerald-500/30 bg-[#030805] space-y-5">
+              <div className="flex items-center justify-between pb-3 border-b border-emerald-950">
+                <div className="flex items-center gap-2">
+                  <div className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
+                  <span className="text-xs font-mono font-bold text-white uppercase tracking-wider">
+                    Executive Profile Card
+                  </span>
+                </div>
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-800">
+                  Minimal Mode
+                </span>
+              </div>
 
-          <Terminal />
+              {/* Core Information Snapshot */}
+              <div className="space-y-3 text-xs">
+                <div className="p-3 rounded-xl bg-black/60 border border-slate-800 space-y-1.5">
+                  <div className="flex items-center gap-2 text-emerald-400 font-semibold font-mono">
+                    <GraduationCap className="w-4 h-4" />
+                    <span>Education &amp; Academic Honors</span>
+                  </div>
+                  <p className="text-slate-300 font-sans">
+                    B.Tech in Computer Science Engineering (2023–Present)
+                  </p>
+                  <p className="text-[11px] font-mono text-slate-400">
+                    Baselios Mathews II College of Engineering • <span className="text-emerald-400 font-bold">CGPA: 7.88</span>
+                  </p>
+                </div>
 
-          {/* Quick Stats Grid underneath terminal */}
+                <div className="p-3 rounded-xl bg-black/60 border border-slate-800 space-y-1.5">
+                  <div className="flex items-center gap-2 text-emerald-400 font-semibold font-mono">
+                    <CheckCircle2 className="w-4 h-4" />
+                    <span>Verified Project Highlights</span>
+                  </div>
+                  <ul className="text-slate-300 space-y-1 font-sans text-[11px]">
+                    <li>• <strong>AI KTU Notes App:</strong> Flutter, Dart, Firebase &amp; Gemini API</li>
+                    <li>• <strong>MeetMash:</strong> Google Meet Chrome Extension &amp; Gemini AI</li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* Target Roles */}
+              <div>
+                <span className="text-[10px] font-mono text-emerald-500/80 uppercase block mb-1.5">
+                  Open For Full-Time &amp; Internship Roles:
+                </span>
+                <div className="flex flex-wrap gap-1.5">
+                  {['Software Engineer', 'Full-Stack Developer', 'AI / Gemini Builder', 'Flutter Engineer'].map((r) => (
+                    <span key={r} className="px-2 py-0.5 rounded-md bg-emerald-950/70 border border-emerald-800/60 text-[10.5px] font-mono text-emerald-300">
+                      {r}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Quick switch banner */}
+              <div className="pt-2 border-t border-emerald-950 flex items-center justify-between text-[11px] font-mono text-slate-400">
+                <span>Want live CLI &amp; simulators?</span>
+                <button
+                  onClick={() => setMode('advanced')}
+                  className="text-emerald-400 hover:underline flex items-center gap-1 font-bold"
+                >
+                  <Zap className="w-3 h-3" />
+                  <span>Switch to Advanced &rarr;</span>
+                </button>
+              </div>
+            </div>
+          ) : (
+            /* Advanced Mode with Interactive Terminal */
+            <>
+              {/* Subtle decoration elements */}
+              <div className="absolute -top-3 -right-3 px-3 py-1 bg-emerald-950/80 border border-emerald-500/40 rounded-lg text-[10px] font-mono text-emerald-300 backdrop-blur-sm z-20 flex items-center gap-1.5 shadow-lg">
+                <TerminalIcon className="w-3 h-3 text-emerald-400 animate-pulse" />
+                <span>Interactive Terminal</span>
+              </div>
+
+              <Terminal />
+            </>
+          )}
+
+          {/* Quick Stats Grid */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-4">
             {RESUME_DATA.stats.map((s, idx) => (
               <motion.div

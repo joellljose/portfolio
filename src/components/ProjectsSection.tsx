@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Code2, Smartphone, CheckCircle, Cpu, Sparkles } from 'lucide-react';
+import { Code2, Smartphone, CheckCircle, Cpu, Sparkles, Zap, Layers, Server } from 'lucide-react';
 import { TechLogo } from './TechLogos';
 import { KtuAppDemo } from './KtuAppDemo';
 import { MeetMashDemo } from './MeetMashDemo';
 import { soundFx } from '../utils/sound';
 import { GithubIcon } from './SocialIcons';
+import { useViewMode } from '../context/ViewModeContext';
 
 export const ProjectsSection: React.FC = () => {
+  const { isMinimal, setMode } = useViewMode();
   const [activeProjectTab, setActiveProjectTab] = useState<'all' | 'ktu' | 'meetmash'>('all');
 
   return (
@@ -152,9 +154,55 @@ export const ProjectsSection: React.FC = () => {
                 </div>
               </div>
 
-              {/* Right Column: Live Interactive Mobile Simulator */}
+              {/* Right Column: Interactive Mobile Simulator OR Minimal Spec Overview */}
               <div className="lg:col-span-6" id="ktu-interactive">
-                <KtuAppDemo />
+                {isMinimal ? (
+                  <div className="p-6 rounded-2xl bg-black border border-emerald-500/30 space-y-4">
+                    <div className="flex items-center justify-between pb-3 border-b border-emerald-950">
+                      <div className="flex items-center gap-2 text-emerald-400 font-mono text-xs font-bold">
+                        <Server className="w-4 h-4" />
+                        <span>System Architecture &amp; Data Pipeline</span>
+                      </div>
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-950 text-emerald-300">
+                        Production Spec
+                      </span>
+                    </div>
+
+                    <div className="space-y-2 text-xs font-mono">
+                      <div className="p-2.5 rounded-xl bg-[#040c06] border border-emerald-900/60 flex items-center justify-between">
+                        <span className="text-slate-300">Client Frontend:</span>
+                        <span className="text-emerald-400">Flutter Mobile &amp; Dart</span>
+                      </div>
+                      <div className="p-2.5 rounded-xl bg-[#040c06] border border-emerald-900/60 flex items-center justify-between">
+                        <span className="text-slate-300">AI Engine:</span>
+                        <span className="text-emerald-400">Google Gemini API</span>
+                      </div>
+                      <div className="p-2.5 rounded-xl bg-[#040c06] border border-emerald-900/60 flex items-center justify-between">
+                        <span className="text-slate-300">Cloud Storage &amp; DB:</span>
+                        <span className="text-emerald-400">Firebase Firestore (Realtime)</span>
+                      </div>
+                      <div className="p-2.5 rounded-xl bg-[#040c06] border border-emerald-900/60 flex items-center justify-between">
+                        <span className="text-slate-300">Security Architecture:</span>
+                        <span className="text-emerald-400">Firebase Auth &amp; RBAC</span>
+                      </div>
+                    </div>
+
+                    <div className="pt-2">
+                      <button
+                        onClick={() => {
+                          setMode('advanced');
+                          soundFx.playSuccess();
+                        }}
+                        className="w-full py-2.5 px-4 rounded-xl bg-emerald-950/70 hover:bg-emerald-900 text-emerald-300 border border-emerald-500/40 text-xs font-mono font-bold flex items-center justify-center gap-2 transition-colors"
+                      >
+                        <Zap className="w-3.5 h-3.5 text-emerald-400" />
+                        <span>Launch Live Interactive Simulator &rarr;</span>
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  <KtuAppDemo />
+                )}
               </div>
             </div>
           </motion.div>
@@ -262,9 +310,55 @@ export const ProjectsSection: React.FC = () => {
                 </div>
               </div>
 
-              {/* Right Column: Live Interactive Chrome Extension Simulator */}
+              {/* Right Column: Live Interactive Chrome Extension Simulator OR Minimal Spec Overview */}
               <div className="lg:col-span-6" id="meetmash-interactive">
-                <MeetMashDemo />
+                {isMinimal ? (
+                  <div className="p-6 rounded-2xl bg-black border border-emerald-500/30 space-y-4">
+                    <div className="flex items-center justify-between pb-3 border-b border-emerald-950">
+                      <div className="flex items-center gap-2 text-emerald-400 font-mono text-xs font-bold">
+                        <Layers className="w-4 h-4" />
+                        <span>Extension Runtime Architecture</span>
+                      </div>
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-950 text-emerald-300">
+                        Production Spec
+                      </span>
+                    </div>
+
+                    <div className="space-y-2 text-xs font-mono">
+                      <div className="p-2.5 rounded-xl bg-[#040c06] border border-emerald-900/60 flex items-center justify-between">
+                        <span className="text-slate-300">Runtime Target:</span>
+                        <span className="text-emerald-400">Chrome Extension Manifest V3</span>
+                      </div>
+                      <div className="p-2.5 rounded-xl bg-[#040c06] border border-emerald-900/60 flex items-center justify-between">
+                        <span className="text-slate-300">DOM Ingestion:</span>
+                        <span className="text-emerald-400">MutationObserver (De-duplicated)</span>
+                      </div>
+                      <div className="p-2.5 rounded-xl bg-[#040c06] border border-emerald-900/60 flex items-center justify-between">
+                        <span className="text-slate-300">AI Intelligence:</span>
+                        <span className="text-emerald-400">Google Gemini API</span>
+                      </div>
+                      <div className="p-2.5 rounded-xl bg-[#040c06] border border-emerald-900/60 flex items-center justify-between">
+                        <span className="text-slate-300">Export &amp; Persistence:</span>
+                        <span className="text-emerald-400">Browser LocalStorage + Markdown</span>
+                      </div>
+                    </div>
+
+                    <div className="pt-2">
+                      <button
+                        onClick={() => {
+                          setMode('advanced');
+                          soundFx.playSuccess();
+                        }}
+                        className="w-full py-2.5 px-4 rounded-xl bg-emerald-950/70 hover:bg-emerald-900 text-emerald-300 border border-emerald-500/40 text-xs font-mono font-bold flex items-center justify-center gap-2 transition-colors"
+                      >
+                        <Zap className="w-3.5 h-3.5 text-emerald-400" />
+                        <span>Launch Live Interactive Simulator &rarr;</span>
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  <MeetMashDemo />
+                )}
               </div>
             </div>
           </motion.div>
